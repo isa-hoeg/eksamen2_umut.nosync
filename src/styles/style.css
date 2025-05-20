@@ -5,7 +5,7 @@
 }
 
 .ramme {
-  max-width: 1100px;
+  max-width: 300px;
 }
 
 /* FONTE */
@@ -39,4 +39,10 @@ h2,
 h3,
 p {
   color: var(--skrift);
+}
+
+@media (min-width: 850px) {
+  .ramme {
+    max-width: 1100px;
+  }
 }
