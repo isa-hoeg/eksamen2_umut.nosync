@@ -1,7 +1,104 @@
-<style>
-  /* MOBIL FORMAT */
+<header>
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="button-link">Velkommen</a>
+      <a href="/kalender" class="button-link">Opskrifter</a>
+    </div>
 
-  /* DESKTOP FORMAT */
+    <a href="/" class="logo">
+      <img src="/imgs/logo.svg" alt="Logo" />
+    </a>
+
+    <div class="nav-right">
+      <a href="/kalender" class="button-link">Rejseguides & Livsstil</a>
+      <a href="/kalender" class="button-link">Søg</a>
+    </div>
+
+    <div class="burger" onclick="toggleMenu(this)">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    background-color: var(--skrift, #233249);
+    padding: 20px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .button-link {
+    text-decoration: none;
+    font-family: "Playfair Display";
+    font-size: 20px;
+    color: rgb(255, 247, 240);
+    padding: 10px;
+  }
+
+  /* === BURGER MENU === */
+  .burger {
+    display: block;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .burger .line {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255, 247, 240);
+    margin-bottom: 5px;
+    transition: 0.2s linear;
+  }
+
+  /* === MOBILMENU (vises når .active) === */
+  nav.active .nav-left,
+  nav.active .nav-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  nav.active .button-link {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+
+  /* === DESKTOP: 850px og op === */
   @media (min-width: 850px) {
+    .burger {
+      display: none;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 90px;
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+    .logo img {
+      height: 80px;
+    }
   }
 </style>
