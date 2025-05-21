@@ -1,6 +1,36 @@
+---
+const { opskrift } = Astro.props;
+---
+
+<article>
+  <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" />
+  <h3>{opskrift.opskrift_titel}</h3>
+</article>
+
 <style>
   /* MOBIL FORMAT */
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h3 {
+    font-size: 20px;
+    padding: 10px;
+    font-family: Playfair Display;
+    font-weight: 600;
+  }
+  article {
+    width: 250px; /* Din ønskede bredde */
+    height: 300px; /* Din ønskede højde */
+    overflow: hidden; /* Beskær billedet */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--smag);
+    border-radius: 10px;
+  }
   /* DESKTOP FORMAT */
   @media (min-width: 850px) {
   }
