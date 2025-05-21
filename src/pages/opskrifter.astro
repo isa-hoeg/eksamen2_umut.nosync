@@ -1,20 +1,21 @@
 ---
 //@ts-nocheck
 
-const url =
-  "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
-const key =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
+const url = "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
 
 const options = {
   headers: {
     apikey: key,
+    Authorization: `Bearer ${key}`,
   },
 };
 
 const data = await fetch(url, options).then((res) => res.json());
 
 console.log(data);
+
+console.log("Data fetched successfully");
 import "../styles/style.css";
 import Header from "../components/Header.astro";
 import OpskriftCard from "../components/OpskriftCard.astro";
@@ -31,10 +32,7 @@ import Filter from "../components/Filter.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
@@ -43,14 +41,7 @@ import Filter from "../components/Filter.astro";
       <div class="ramme">
         <h1>OPSKRIFTER</h1>
         <h3>Mad med sjæl, smag og sanselighed</h3>
-        <p>
-          Hos Umut handler mad ikke bare om opskrifter – det handler om minder,
-          nysgerrighed og kærlighed til råvarer. Her på siden kan du gå på
-          opdagelse i hans univers: Fra klassiske livretter til nye
-          fortolkninger, altid med smagen i centrum. Brug siden til at finde
-          inspiration, skabe dine egne variationer og gemme dine favoritter. Det
-          er mad med personlighed – lige til at gå til.
-        </p>
+        <p>Hos Umut handler mad ikke bare om opskrifter – det handler om minder, nysgerrighed og kærlighed til råvarer. Her på siden kan du gå på opdagelse i hans univers: Fra klassiske livretter til nye fortolkninger, altid med smagen i centrum. Brug siden til at finde inspiration, skabe dine egne variationer og gemme dine favoritter. Det er mad med personlighed – lige til at gå til.</p>
       </div>
     </section>
     <section class="filter">
@@ -71,7 +62,14 @@ import Filter from "../components/Filter.astro";
 
   <style>
     /* MOBIL FORMAT */
-
+    .hero {
+      background-image: url("/svg_forside/broccoli.svg");
+      background-position: 100%;
+      background-repeat: no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 200px; /* eller fx 50%, contain, eller cover */
+    }
     h1 {
       font-size: 40px;
       text-align: center;
