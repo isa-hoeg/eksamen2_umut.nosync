@@ -30,6 +30,15 @@ export async function getStaticPaths() {
     };
   });
 }
+/*
+1. Splitter ingredienser-teksten ved linjeskift (\n), så vi får en liste (array).
+2. Fjerner tomme linjer med .filter() og .trim().
+trim() fjerner mellemrum i starten og slutningen af teksten.
+!== '' betyder “hvis linjen ikke er tom”.
+*/
+const ingredienser = opskrift.opskrift_ingredienser
+  .split("\n")
+  .filter((ingrediens) => ingrediens.trim() !== "");
 ---
 
 <!doctype html>
@@ -49,91 +58,277 @@ export async function getStaticPaths() {
   <body>
     <Header />
     <main>
-      <section class="intro_section">
-        <div class="ramme">
+      <div class="ramme">
+        <section class="intro_section">
           <h1>{opskrift.opskrift_titel}</h1>
-          <img src={`/imgs/${opskrift.opskrift_img}`} alt="img_opskrift" />
-          <div class="knapper"></div>
-        </div>
-      </section>
-      <section class="besrkivelse_section">
-        <div class="ramme">
-          <h2>Beskrivelse:</h2>
-          <p>{opskrift.beskrivelse}</p>
-          <a href="[slug].astro#video_section" class="knap_t_video"
-            >Gå til video her!</a
-          >
-        </div>
-      </section>
-      <section class="fremgang_section">
-        <div class="ramme">
-          <div class="skaerm_taendt">
-            <img src="" <p />Hold min skærm tændt
+          <img
+            src={`/imgs/${opskrift.opskrift_img}`}
+            alt="img_opskrift"
+            class="img_opskrift"
+          />
+          <div class="knapper">
+            <div class="knap_intro">
+              <h3>{opskrift.opskrift_type}</h3>
+            </div>
+            <div class="knap_intro">
+              <h3>{opskrift.opskrift_varighed}</h3>
+            </div>
+            <div class="knap_intro">
+              <h3>4 personer</h3>
+            </div>
           </div>
+        </section>
+
+        <section class="beskrivelse_section">
+          <h2>Beskrivelse:</h2>
+          <p>{opskrift.opskrift_beskrivelse}</p>
+          <div class="knap_video">
+            <a href="[slug].astro#video_section" class="knap_t_video"
+              >Gå til video her!</a
+            >
+          </div>
+        </section>
+        <div class="skaerm_taendt">
+          <img src="" <p />Hold min skærm tændt
         </div>
+
         <div class="favorit_ikon">
           <img src="" <p />Føj til favoritter
         </div>
-        <div class="ingredienser_boks">
-          <h2>Ingredienser:</h2>
-          <p>{opskrift.ingredienser}</p>
-        </div>
-        <div class="fremgangsmade_boks">
-          <h2>Fremgangsmåde:</h2>
-          <p>{opskrift.fremgang}</p>
-        </div>
-      </section>
-      <section id="video_section">
-        <div class="ramme">
+        <section class="fremgang_section">
+          <div class="ingredienser_boks">
+            <h2>Ingredienser:</h2>
+            <ul>
+              {
+                /*
+                 Går igennem hver ingrediens i array’et og viser den som et <li>.
+                 'index' er positionen i array’et (0, 1, 2...) og bruges som 'key'.
+                */
+              }
+              {
+                ingredienser.map((ingrediens, index) => (
+                  <li key={index}>{ingrediens}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="fremgangsmade_boks">
+            <h2>Fremgangsmåde:</h2>
+            <p>{opskrift.opskrift_fremgang}</p>
+          </div>
+        </section>
+        <section id="video_section">
           <h2>Kom i køkkenet med Umut!</h2>
-        </div>
-      </section>
-      <section class="anmeldelser_section">
-        <div class="ramme">
-          <h2>Hvad andre synes!</h2>
+          <iframe
+            width="100%"
+            height="auto"
+            src={opskrift.opskrift_video}
+            title="YouTube video af opskrift"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </section>
+        <section class="anmeldelser_section">
+          <h2 class="større_h2">Hvad andre synes!</h2>
           <div class="anmeldelser">
             <h3>Anette</h3>
-            <p>
+            <p class="anmeldelse">
               "Jeg har aldrig været så glad for at lave mad, som jeg er nu. Tak
               Umut!"
             </p>
           </div>
           <div class="anmeldelser">
             <h3>Mogens</h3>
-            <p>
+            <p class="anmeldelse">
               "Super opskrift! Det smagede fantastisk og var super nemt at
               lave!"
             </p>
           </div>
           <div class="anmeldelser">
             <h3>Henriette</h3>
-            <p>
+            <p class="anmeldelse">
               "Mine børn elsker det! De vil gerne have det hver dag. Tak Umut!"
             </p>
           </div>
-        </div>
-      </section>
-      <section class="kommentar_section">
-        <div class="ramme">
-          <h2>Hvad synes du om opskrifterne?</h2>
+        </section>
+        <section class="kommentar_section">
+          <h2 class="større_h2">Hvad synes du om opskrifterne?</h2>
           <p>
             Skriv her, hvad du synes om opskriften, eller om du gjorde noget
             andet, som også fungerede over forventning, så jeg og andre kan få
             tips og tricks.
           </p>
-          <div class="kommentar_boks"></div>
+          <form class="kommentar_form">
+            <input
+              type="text"
+              id="navn"
+              name="navn"
+              placeholder="Dit navn"
+              required
+            />
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+
+            <textarea
+              id="kommentar"
+              name="kommentar"
+              rows="5"
+              placeholder="Skriv din kommentar her..."
+              required></textarea>
+          </form>
+
           <p class="knap_send">Send</p>
-        </div>
-      </section>
-      <Footer />
+        </section>
+      </div>
     </main>
+    <Footer />
 
     <style>
       /* MOBIL FORMAT */
+
+      /* FONTE */
+      h1 {
+        padding-top: 25px;
+        font-size: 40px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 20px;
+        padding: 7px 0px;
+      }
+      .større_h2 {
+        font-size: 30px;
+        text-align: center;
+      }
+      h3 {
+        font-size: 14px;
+        text-align: center;
+      }
+      p {
+        font-size: 13px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+      .anmeldelse {
+        font-style: italic;
+        text-align: center;
+      }
+      a {
+        font-size: 13px;
+        font-family: "Lora";
+      }
+      /* FONTE */
+      .img_opskrift {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+      .knapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 1rem 0 2rem 0rem;
+      }
+      .knap_intro {
+        background-color: var(--brun);
+        border-radius: 10px;
+        padding: 10px 25px;
+        width: 200px;
+      }
+      .beskrivelse_section,
+      .fremgang_section,
+      .anmeldelser_section {
+        margin: 2rem 0rem;
+      }
       .knap_t_video {
         background-color: var(--skrift);
         color: var(--baggrund);
         border-radius: 10px;
+        padding: 10px 20px;
+        text-decoration: none;
+      }
+      .knap_t_video:hover {
+        background-color: var(--skrift);
+        color: var(--baggrund);
+        border-radius: 10px;
+        border: 2px solid var(--brun);
+        padding: 10px 25px;
+        cursor: pointer;
+      }
+      .knap_video {
+        margin: 30px 0px;
+      }
+      .ingredienser_boks {
+        background-color: var(--brun);
+        border-radius: 10px;
+        padding: 10px 10px;
+        margin-bottom: 20px;
+        font-family: lora;
+        font-size: 13px;
+        color: var(--skrift);
+        list-style-position: inside;
+        /* list-style-position gør, at punktformen (•) placeres inden for boksen, sammen med teksten.
+
+ */
+      }
+      .anmeldelser {
+        padding: 10px;
+        margin-top: 15px;
+      }
+      .video_section {
+      }
+
+      .knap_send {
+        display: inline-block; /* gør den kun så bred som indholdet */
+        background-color: var(--skrift);
+        color: var(--baggrund);
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin: 10px 0px;
+        cursor: pointer;
+      }
+      .knap_send:hover {
+        background-color: var(--skrift);
+        color: var(--baggrund);
+        border-radius: 10px;
+        border: 2px solid var(--brun);
+      }
+
+      .kommentar_section {
+        background-color: var(--baggrund);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .kommentar_form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 25px;
+      }
+      .kommentar_form input,
+      .kommentar_form textarea {
+        padding: 10px;
+        border: 1px solid var(--brun);
+        border-radius: 8px;
+        font-family: "Lora";
+        font-size: 15px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .kommentar_form input::placeholder,
+      .kommentar_form textarea::placeholder {
+        color: #888; /* grå farve */
+        font-size: 13px;
+        font-family: "Lora";
       }
 
       /* DESKTOP FORMAT */
