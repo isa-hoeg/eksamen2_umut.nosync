@@ -1,0 +1,144 @@
+---
+//@ts-nocheck
+import "../../styles/style.css";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import SingleOpskrift from "../components/SingleOpskrift.astro";
+
+const { opskrift } = Astro.props;
+
+export async function getStaticPaths() {
+  const url =
+    "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
+
+  const key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
+
+  const options = {
+    headers: {
+      apikey: key,
+    },
+  };
+
+  const data = await fetch(url, options).then((res) => res.json());
+
+  console.log("Data fra Supabase:", data);
+  return data.map((opskrift) => {
+    return {
+      params: { slug: opskrift.opskrift_slug },
+      props: { opskrift },
+    };
+  });
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <section class="intro_section">
+        <div class="ramme">
+          <h1>{opskrift.opskrift_titel}</h1>
+          <img src={`/imgs/${opskrift.opskrift_img}`} alt="img_opskrift" />
+          <div class="knapper"></div>
+        </div>
+      </section>
+      <section class="besrkivelse_section">
+        <div class="ramme">
+          <h2>Beskrivelse:</h2>
+          <p>{opskrift.beskrivelse}</p>
+          <a href="[slug].astro#video_section" class="knap_t_video"
+            >Gå til video her!</a
+          >
+        </div>
+      </section>
+      <section class="fremgang_section">
+        <div class="ramme">
+          <div class="skaerm_taendt">
+            <img src="" <p />Hold min skærm tændt
+          </div>
+        </div>
+        <div class="favorit_ikon">
+          <img src="" <p />Føj til favoritter
+        </div>
+        <div class="ingredienser_boks">
+          <h2>Ingredienser:</h2>
+          <p>{opskrift.ingredienser}</p>
+        </div>
+        <div class="fremgangsmade_boks">
+          <h2>Fremgangsmåde:</h2>
+          <p>{opskrift.fremgang}</p>
+        </div>
+      </section>
+      <section id="video_section">
+        <div class="ramme">
+          <h2>Kom i køkkenet med Umut!</h2>
+        </div>
+      </section>
+      <section class="anmeldelser_section">
+        <div class="ramme">
+          <h2>Hvad andre synes!</h2>
+          <div class="anmeldelser">
+            <h3>Anette</h3>
+            <p>
+              "Jeg har aldrig været så glad for at lave mad, som jeg er nu. Tak
+              Umut!"
+            </p>
+          </div>
+          <div class="anmeldelser">
+            <h3>Mogens</h3>
+            <p>
+              "Super opskrift! Det smagede fantastisk og var super nemt at
+              lave!"
+            </p>
+          </div>
+          <div class="anmeldelser">
+            <h3>Henriette</h3>
+            <p>
+              "Mine børn elsker det! De vil gerne have det hver dag. Tak Umut!"
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="kommentar_section">
+        <div class="ramme">
+          <h2>Hvad synes du om opskrifterne?</h2>
+          <p>
+            Skriv her, hvad du synes om opskriften, eller om du gjorde noget
+            andet, som også fungerede over forventning, så jeg og andre kan få
+            tips og tricks.
+          </p>
+          <div class="kommentar_boks"></div>
+          <p class="knap_send">Send</p>
+        </div>
+      </section>
+      <Footer />
+    </main>
+
+    <style>
+      /* MOBIL FORMAT */
+      .knap_t_video {
+        background-color: var(--skrift);
+        color: var(--baggrund);
+        border-radius: 10px;
+      }
+
+      /* DESKTOP FORMAT */
+      @media (min-width: 850px) {
+      }
+    </style>
+  </body>
+</html>
