@@ -1,7 +1,159 @@
-<style>
-  /* MOBIL FORMAT */
+<footer class="footer">
+  <div>
+    <div>
+      <a href="/" class="logo">
+        <img src="/imgs/logo.svg" alt="Logo" />
+      </a>
 
-  /* DESKTOP FORMAT */
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@umutsakarya5878" class="some_ikon">
+          <img src="/imgs/yt_ikon.svg" alt="" />
+        </a>
+        <a href="https://www.instagram.com/umutsakarya/" class="some_ikon">
+          <img src="/imgs/insta_ikon.svg" alt="" />
+        </a>
+        <a
+          href="https://www.tiktok.com/@umutrasakarya?is_from_webapp=1&sender_device=pc"
+          class="some_ikon"
+        >
+          <img src="/imgs/tiktok_ikon.svg" alt="" />
+        </a>
+      </div>
+    </div>
+
+    <div class="links">
+      <h3>Hurtige links</h3>
+      <ul>
+        <li><a href="/opskrifter">Opskrifter</a></li>
+        <li><a href="/rejseguides">Rejseguides & livsstil</a></li>
+        <li><a href="/kokken-basics">Umuts Køkken-Basics</a></li>
+        <li><a href="/samarbejde">Arbejd med mig</a></li>
+      </ul>
+    </div>
+
+    <div class="contact">
+      <h3>Kontakt & samarbejder</h3>
+      <p>
+        Samarbejder & presse:<br /><a href="mailto:kontakt@umutsakarya.dk"
+          >kontakt@umutsakarya.dk</a
+        >
+      </p>
+      <p>
+        Generelle henvendelser:<br /><a href="mailto:info@umutsakarya.dk"
+          >info@umutsakarya.dk</a
+        >
+      </p>
+    </div>
+    <div class="information">
+      <h3>Information</h3>
+      <ul>
+        <li><a href="#">Privatpolitik</a></li>
+        <li><a href="#">Cookie-indstillinger</a></li>
+        <li><a href="#">Handelsbetingelser</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--skrift, #233249);
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    color: var(--baggrund);
+    padding: 40px 20px;
+  }
+
+  /* > hiver fat i første div inde i footer, så kun denne får anvendt flexbox */
+  .footer > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 10px;
+  }
+
+  .some_ikon img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .links ul,
+  .information ul {
+    list-style-type: disc;
+    margin-left: 24px;
+    text-align: left;
+    margin-top: 13px;
+  }
+
+  .links li,
+  .information li {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .links a,
+  .information a {
+    text-decoration: none;
+    color: var(--baggrund);
+  }
+  .links h3,
+  .information h3 {
+    color: var(--baggrund);
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .contact h3 {
+    color: var(--baggrund);
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  .contact p {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--baggrund);
+    text-align: left;
+    margin: 10px;
+  }
+
+  .contact a {
+    color: var(--baggrund);
+    text-decoration: none;
+  }
+
+  .contact a:hover {
+    text-decoration: underline;
+  }
+
   @media (min-width: 850px) {
+    .logo {
+      width: 90%;
+      height: 90px;
+    }
+    .footer > div {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .footer .social-icons {
+      justify-content: flex-start;
+      margin-top: 16px;
+    }
   }
 </style>
