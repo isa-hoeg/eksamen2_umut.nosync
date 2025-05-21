@@ -39,7 +39,7 @@ import Footer from "../components/Footer.astro";
       <div class="ramme">
         <div class="grid_1-1">
           <img src="/imgs/Umut_.webp" alt="" class="umut_img" />
-          <div>
+          <div class="velkommen">
             <h1>VELKOMMEN</h1>
             <p>Hej, jeg hedder Umut.</p>
             <p>
@@ -67,324 +67,324 @@ import Footer from "../components/Footer.astro";
       <div class="ramme">
         <h1>SMAG</h1>
         <div class="smagcards">
-          {data.map((opskrift) => <SmagCard opskrift={opskrift} />)}
-          <!-- <SmagCard />
-          <SmagCard />
-          <SmagCard />
-          <SmagCard /> -->
+          {
+            Array.isArray(data) &&
+              data
+                .slice(5, 9)
+                .map((opskrift) => <SmagCard opskrift={opskrift} />)
+          }
         </div>
         <div class="smag_knap">
           <a href="">Se alle opskrifter</a>
         </div>
       </div>
-      <div class="border"></div>
-      <section class="oplev">
-        <div class="ramme">
-          <div class="grid_1-1">
-            <div class="rejs_text">
-              <h1>OPLEV</h1>
-              <p>
-                Er du lige så madnysgerrig som mig, når du rejser ud i den
-                store, vilde verden?
-              </p>
-              <p>
-                Så hop med i kufferten og dyk ned i mine rejseguides, hvor jeg
-                smager mig igennem alt fra snaskede street food-boder til fancy
-                restauranter med hvide duge.
-              </p>
-              <p>
-                Jeg tester, smager og fortæller – så du kan få tips til de
-                bedste madoplevelser, uanset om du er til dumplings i Tokyo
-                eller tacos i Mexico City. Klar til at rejse med smagsløgene
-                forrest?
-              </p>
-              <div class="udforsk_knap">
-                <a href="">Udforsk her</a>
-              </div>
-            </div>
-
-            <div class="rejs_img">
-              <img src="/imgs/oplev1.webp" alt="" class="oplev1" />
-              <img src="/imgs/oplev2.webp" alt="" class="oplev2" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="border"></div>
-      <section class="skab">
-        <div class="ramme">
-          <div class="grid_1-1">
-            <div>
-              <h1>SKAB</h1>
-              <p>
-                Til hver opskrift jeg deler, følger der også en video med, hvor
-                jeg viser dig, hvordan retten bliver til – trin for trin. Her
-                kan du ikke bare følge med, men også skabe dine egne
-                madoplevelser med lidt ekstra hjælp fra mine personlige tips,
-                tricks og små genveje.
-              </p>
-              <p>
-                I videoerne får du også et indblik i, hvilke køkkenredskaber jeg
-                bruger, og hvordan du selv kan arbejde smart og effektivt i
-                køkkenet. Jeg samarbejder med brands, jeg selv bruger, og du kan
-                indimellem få adgang til rabatkoder og tilbud – kun ved at se
-                med.
-              </p>
-              <p>
-                Alle videoerne kan du finde på min YouTube-kanal – men de ligger
-                også nemt tilgængelige under hver enkelt opskrift her på siden,
-                så du kan skabe og lave maden i dit eget tempo.
-              </p>
-
-              <div class="skab_knapper">
-                <a href="" class="smag_knap"> Gå til opskrifter </a>
-                <a href="" class="smag_knap"> Gå til YouTube </a>
-              </div>
-            </div>
-
-            <div class="yt_video">
-              <a href=""><img src="/imgs/kylling_stegt.svg" alt="" /></a>
-              <a href=""><img src="/imgs/tso_chicken.svg" alt="" /></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="border"></div>
-      <section class="some">
-        <div class="ramme">
-          <h1>FØLG MED HER</h1>
-          <div class="grid_1-1-1">
-            <a
-              href="https://www.youtube.com/@umutsakarya5878"
-              class="some_ikon"
-            >
-              <img src="/imgs/yt_ikon.svg" alt="" />
-              <p>@umutsakarya5878</p>
-              <p>100k</p>
-            </a>
-
-            <a href="https://www.instagram.com/umutsakarya/" class="some_ikon">
-              <img src="/imgs/insta_ikon.svg" alt="" />
-              <p>@umutsakarya</p>
-              <p>344k</p>
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@umutrasakarya?is_from_webapp=1&sender_device=pc"
-              class="some_ikon"
-            >
-              <img src="/imgs/tiktok_ikon.svg" alt="" />
-              <p>@umutrasakarya</p>
-              <p>190k</p>
-            </a>
-          </div>
-        </div>
-      </section>
-      <div class="border"></div>
     </section>
-    <Footer />
+    <div class="border"></div>
+    <section class="oplev">
+      <div class="ramme">
+        <div class="grid_1-1">
+          <div class="rejs_text">
+            <h1>OPLEV</h1>
+            <p>
+              Er du lige så madnysgerrig som mig, når du rejser ud i den store,
+              vilde verden?
+            </p>
+            <p>
+              Så hop med i kufferten og dyk ned i mine rejseguides, hvor jeg
+              smager mig igennem alt fra snaskede street food-boder til fancy
+              restauranter med hvide duge.
+            </p>
+            <p>
+              Jeg tester, smager og fortæller – så du kan få tips til de bedste
+              madoplevelser, uanset om du er til dumplings i Tokyo eller tacos i
+              Mexico City. Klar til at rejse med smagsløgene forrest?
+            </p>
+            <div class="udforsk_knap">
+              <a href="">Udforsk her</a>
+            </div>
+          </div>
+
+          <div class="rejs_img">
+            <img src="/imgs/oplev1.webp" alt="" class="oplev1" />
+            <img src="/imgs/oplev2.webp" alt="" class="oplev2" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="border"></div>
+    <section class="skab">
+      <div class="ramme">
+        <div class="grid_1-1">
+          <div>
+            <h1>SKAB</h1>
+            <p>
+              Til hver opskrift jeg deler, følger der også en video med, hvor
+              jeg viser dig, hvordan retten bliver til – trin for trin. Her kan
+              du ikke bare følge med, men også skabe dine egne madoplevelser med
+              lidt ekstra hjælp fra mine personlige tips, tricks og små genveje.
+            </p>
+            <p>
+              I videoerne får du også et indblik i, hvilke køkkenredskaber jeg
+              bruger, og hvordan du selv kan arbejde smart og effektivt i
+              køkkenet. Jeg samarbejder med brands, jeg selv bruger, og du kan
+              indimellem få adgang til rabatkoder og tilbud – kun ved at se med.
+            </p>
+            <p>
+              Alle videoerne kan du finde på min YouTube-kanal – men de ligger
+              også nemt tilgængelige under hver enkelt opskrift her på siden, så
+              du kan skabe og lave maden i dit eget tempo.
+            </p>
+
+            <div class="skab_knapper">
+              <a href="" class="smag_knap"> Gå til opskrifter </a>
+              <a href="" class="smag_knap"> Gå til YouTube </a>
+            </div>
+          </div>
+
+          <div class="yt_video">
+            <a href=""><img src="/imgs/kylling_stegt.svg" alt="" /></a>
+            <a href=""><img src="/imgs/tso_chicken.svg" alt="" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="border"></div>
+    <section class="some">
+      <div class="ramme">
+        <h1>FØLG MED HER</h1>
+        <div class="grid_1-1-1">
+          <a href="https://www.youtube.com/@umutsakarya5878" class="some_ikon">
+            <img src="/imgs/yt_ikon.svg" alt="" />
+            <p>@umutsakarya5878</p>
+            <p>100k</p>
+          </a>
+
+          <a href="https://www.instagram.com/umutsakarya/" class="some_ikon">
+            <img src="/imgs/insta_ikon.svg" alt="" />
+            <p>@umutsakarya</p>
+            <p>344k</p>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@umutrasakarya?is_from_webapp=1&sender_device=pc"
+            class="some_ikon"
+          >
+            <img src="/imgs/tiktok_ikon.svg" alt="" />
+            <p>@umutrasakarya</p>
+            <p>190k</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="border"></div>
   </body>
+  <Footer />
+</html>
 
-  <style>
-    /* MOBIL FORMAT */
+<style>
+  /* MOBIL FORMAT */
 
-    .border {
-      border: 1px solid var(--brun);
-      width: 75%;
+  .border {
+    border: 1px solid var(--brun);
+    width: 75%;
+  }
+  .hero {
+    img {
+      width: 100%;
     }
-    .hero {
-      img {
-        width: 100%;
-      }
-    }
+  }
 
-    h1 {
-      font-size: 40px;
-    }
+  h1 {
+    font-size: 40px;
+  }
 
-    p {
-      font-size: 15px;
-      margin-top: 15px;
-      margin-bottom: 15px;
+  p {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Playfair Display;
+    font-weight: 600;
+  }
+
+  .tilmeld_knap {
+    display: inline-block;
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    a {
+      color: var(--baggrund);
     }
+  }
+
+  .smagcards {
+    gap: 20px;
+  }
+
+  .smag {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  .smag_knap {
+    margin-top: 40px;
+    display: inline-block;
+    background-color: var(--smag);
+    color: var(--skrift);
+    padding: 12px;
+    border-radius: 10px;
+    a {
+      color: var(--skrift);
+    }
+  }
+
+  .oplev {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    /* border-top: 2px solid var(--brun); */
+  }
+
+  .udforsk_knap {
+    display: inline-block;
+    background-color: var(--oplev);
+    color: var(--skrift);
+    padding: 12px;
+    border-radius: 10px;
+    a {
+      color: var(--skrift);
+    }
+    margin-bottom: 50px;
+  }
+
+  .rejs_img {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rejs_img img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 6px solid var(--oplev);
+  }
+
+  .oplev1 {
+    grid-column: 1/ 3;
+    grid-row: 1 / span 2;
+  }
+
+  .oplev2 {
+    grid-column: 2/ 4;
+    grid-row: 2 / span 2;
+  }
+
+  .skab {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  .skab_knapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 
     a {
-      text-decoration: none;
-      font-size: 18px;
-      font-family: Playfair Display;
-      font-weight: 600;
-    }
-
-    .tilmeld_knap {
-      display: inline-block;
-      background-color: var(--skrift);
+      font-size: 15px;
+      background-color: var(--skab);
       color: var(--baggrund);
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 10px;
-      a {
-        color: var(--baggrund);
-      }
     }
+  }
 
-    .smagcards {
-      /* display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px; */
-    }
-    .smag {
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    .smag_knap {
+  .some {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  .some_ikon {
+    img {
       margin-top: 40px;
-      display: inline-block;
-      background-color: var(--smag);
-      color: var(--skrift);
-      padding: 12px;
-      border-radius: 10px;
-      a {
-        color: var(--skrift);
-      }
     }
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+  }
 
-    .oplev {
+  .yt_video {
+    margin-top: 30px;
+    background-color: var(--skab);
+    padding: 10px;
+    border-radius: 10px;
+    img {
+      width: 100%;
+    }
+  }
+
+  /* DESKTOP FORMAT */
+  @media (min-width: 850px) {
+    .velkommen {
       margin-top: 70px;
-      margin-bottom: 70px;
-      /* border-top: 2px solid var(--brun); */
-    }
-
-    .udforsk_knap {
-      display: inline-block;
-      background-color: var(--oplev);
-      color: var(--skrift);
-      padding: 12px;
-      border-radius: 10px;
-      a {
-        color: var(--skrift);
+      h1 {
+        font-size: 90px;
       }
-      margin-bottom: 50px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .grid_1-1 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
     }
 
     .rejs_img {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .rejs_img img {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 6px solid var(--oplev);
+      grid-template-columns: repeat(4, 1fr);
+      order: -1;
+      p {
+        width: 40ch;
+      }
     }
 
     .oplev1 {
-      grid-column: 1/ 3;
+      grid-column: 2/ 4;
       grid-row: 1 / span 2;
     }
 
     .oplev2 {
-      grid-column: 2/ 4;
+      grid-column: 3/ 5;
       grid-row: 2 / span 2;
     }
 
-    .skab {
-      margin-top: 70px;
-      margin-bottom: 70px;
+    .rejs_text {
+      width: 50ch;
     }
 
     .skab_knapper {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-
-      a {
-        font-size: 15px;
-        background-color: var(--skab);
-        color: var(--baggrund);
-      }
-    }
-
-    .some {
-      text-align: center;
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-    .some_ikon {
-      img {
-        margin-top: 40px;
-      }
-      p {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 20px;
-      }
-    }
-
-    .yt_video {
-      margin-top: 30px;
-      background-color: var(--skab);
-      padding: 10px;
-      border-radius: 10px;
-      img {
-        width: 100%;
-      }
-    }
-
-    /* DESKTOP FORMAT */
-    @media (min-width: 850px) {
-      p {
-        font-size: 20px;
-      }
-      .grid_1-1 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-      }
-
-      .rejs_img {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        order: -1;
-        p {
-          width: 40ch;
-        }
-      }
-
-      .oplev1 {
-        grid-column: 2/ 4;
-        grid-row: 1 / span 2;
-      }
-
-      .oplev2 {
-        grid-column: 3/ 5;
-        grid-row: 2 / span 2;
-      }
-
-      .rejs_text {
-        width: 50ch;
-      }
-
-      .skab_knapper {
-        a {
-          font-size: 24px;
-        }
-      }
       a {
         font-size: 24px;
       }
-
-      .grid_1-1-1 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .smagcards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-      }
     }
-  </style>
-</html>
+    a {
+      font-size: 24px;
+    }
+
+    .grid_1-1-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .smagcards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+</style>

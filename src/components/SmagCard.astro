@@ -2,9 +2,11 @@
 const { opskrift } = Astro.props;
 ---
 
-<article>
-  <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" />
-  <h3>{opskrift.opskrift_titel}</h3>
+<article class="card_container">
+  <div class="card">
+    <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" />
+    <h3>{opskrift.opskrift_titel}</h3>
+  </div>
 </article>
 
 <style>
@@ -12,26 +14,27 @@ const { opskrift } = Astro.props;
 
   img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 254/264;
     object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card_container {
+    background-color: var(--smag);
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 25px;
   }
 
   h3 {
     font-size: 20px;
     padding: 10px;
-    font-family: Playfair Display;
-    font-weight: 600;
   }
-  article {
-    width: 250px; /* Din ønskede bredde */
-    height: 300px; /* Din ønskede højde */
-    overflow: hidden; /* Beskær billedet */
-    display: flex;
-    flex-direction: column;
-    background-color: var(--smag);
-    border-radius: 10px;
-  }
+
   /* DESKTOP FORMAT */
   @media (min-width: 850px) {
+    img {
+      aspect-ratio: 254/264;
+    }
   }
 </style>
