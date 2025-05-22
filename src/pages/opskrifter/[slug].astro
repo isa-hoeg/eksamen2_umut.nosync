@@ -83,18 +83,28 @@ const ingredienser = opskrift.opskrift_ingredienser
           <h2>Beskrivelse:</h2>
           <p>{opskrift.opskrift_beskrivelse}</p>
           <div class="knap_video">
-            <a href="[slug].astro#video_section" class="knap_t_video"
-              >Gå til video her!</a
-            >
+            <a href="#video_section" class="knap_t_video">Gå til video her!</a>
           </div>
         </section>
-        <div class="skaerm_taendt">
-          <img src="" <p />Hold min skærm tændt
+        <div class="border"></div>
+        <div class="svg_ikoner">
+          <div class="skaerm_taendt">
+            <div class="skiftContainer" id="skift">
+              <img
+                src="../../../public/imgs/cirkel_t_ikon.svg"
+                alt="cirkel"
+                class="cirkel_t_ikon"
+              />
+            </div>
+            <p>Hold skærmen tændt</p>
+          </div>
+
+          <div class="favorit_ikon">
+            <img src="../../../public/imgs/heart.svg" alt="heart" />
+            <p>Føj til mine favoritter</p>
+          </div>
         </div>
 
-        <div class="favorit_ikon">
-          <img src="" <p />Føj til favoritter
-        </div>
         <section class="fremgang_section">
           <div class="ingredienser_boks">
             <h2>Ingredienser:</h2>
@@ -117,65 +127,76 @@ const ingredienser = opskrift.opskrift_ingredienser
             <p>{opskrift.opskrift_fremgang}</p>
           </div>
         </section>
+        <div class="border"></div>
         <section id="video_section">
-          <h2>Kom i køkkenet med Umut!</h2>
-          <iframe
-            width="100%"
-            height="auto"
-            src={opskrift.opskrift_video}
-            title="YouTube video af opskrift"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          >
-          </iframe>
+          <h2 class="større_h2">Kom i køkkenet med Umut!</h2>
+          <div class="video_wrapper">
+            <iframe
+              width="100%"
+              height="auto"
+              src={opskrift.opskrift_video}
+              title="YouTube video af opskrift"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+          <div class="border"></div>
         </section>
         <section class="anmeldelser_section">
           <h2 class="større_h2">Hvad andre synes!</h2>
-          <div class="anmeldelser">
-            <h3>Anette</h3>
-            <p class="anmeldelse">
-              "Jeg har aldrig været så glad for at lave mad, som jeg er nu. Tak
-              Umut!"
-            </p>
-          </div>
-          <div class="anmeldelser">
-            <h3>Mogens</h3>
-            <p class="anmeldelse">
-              "Super opskrift! Det smagede fantastisk og var super nemt at
-              lave!"
-            </p>
-          </div>
-          <div class="anmeldelser">
-            <h3>Henriette</h3>
-            <p class="anmeldelse">
-              "Mine børn elsker det! De vil gerne have det hver dag. Tak Umut!"
-            </p>
+          <div class="alle_anmeldelser">
+            <div class="anmeldelser">
+              <h3 class="navne_anmeldelser">Anette</h3>
+              <p class="anmeldelse">
+                "Jeg har aldrig været så glad for at lave mad, som jeg er nu.
+                Tak Umut!"
+              </p>
+            </div>
+            <div class="anmeldelser">
+              <h3 class="navne_anmeldelser">Mogens</h3>
+              <p class="anmeldelse">
+                "Super opskrift! Det smagede fantastisk og var super nemt at
+                lave!"
+              </p>
+            </div>
+            <div class="anmeldelser">
+              <h3 class="navne_anmeldelser">Henriette</h3>
+              <p class="anmeldelse">
+                "Mine børn elsker det! De vil gerne have det hver dag. Tak
+                Umut!"
+              </p>
+            </div>
           </div>
         </section>
+
+        <div class="border"></div>
         <section class="kommentar_section">
           <h2 class="større_h2">Hvad synes du om opskrifterne?</h2>
-          <p>
+          <p class="intro_t_kommentar">
             Skriv her, hvad du synes om opskriften, eller om du gjorde noget
             andet, som også fungerede over forventning, så jeg og andre kan få
             tips og tricks.
           </p>
           <form class="kommentar_form">
-            <input
-              type="text"
-              id="navn"
-              name="navn"
-              placeholder="Dit navn"
-              required
-            />
+            <div class="mindste_kasser">
+              <input
+                type="text"
+                id="navn"
+                name="navn"
+                placeholder="Dit navn"
+                required
+              />
 
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
 
             <textarea
               id="kommentar"
@@ -189,151 +210,312 @@ const ingredienser = opskrift.opskrift_ingredienser
         </section>
       </div>
     </main>
+
     <Footer />
+  </body>
+  <!-- Flyt denne HELT nederst før </html> -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const skiftContainer = document.getElementById("skift");
+      if (skiftContainer) {
+        skiftContainer.addEventListener("click", () => {
+          skiftContainer.classList.toggle("switch-on");
+        });
+      }
+    });
+  </script>
+</html>
 
-    <style>
-      /* MOBIL FORMAT */
+<style>
+  /* -------MOBIL FORMAT------- */
 
-      /* FONTE */
-      h1 {
-        padding-top: 25px;
-        font-size: 40px;
-        text-align: center;
-      }
-      h2 {
-        font-size: 20px;
-        padding: 7px 0px;
-      }
-      .større_h2 {
-        font-size: 30px;
-        text-align: center;
-      }
-      h3 {
-        font-size: 14px;
-        text-align: center;
-      }
-      p {
-        font-size: 13px;
-        margin-top: 5px;
-        margin-bottom: 15px;
-      }
-      .anmeldelse {
-        font-style: italic;
-        text-align: center;
-      }
-      a {
-        font-size: 13px;
-        font-family: "Lora";
-      }
-      /* FONTE */
-      .img_opskrift {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-      }
-      .knapper {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin: 1rem 0 2rem 0rem;
-      }
-      .knap_intro {
-        background-color: var(--brun);
-        border-radius: 10px;
-        padding: 10px 25px;
-        width: 200px;
-      }
-      .beskrivelse_section,
-      .fremgang_section,
-      .anmeldelser_section {
-        margin: 2rem 0rem;
-      }
-      .knap_t_video {
-        background-color: var(--skrift);
-        color: var(--baggrund);
-        border-radius: 10px;
-        padding: 10px 20px;
-        text-decoration: none;
-      }
-      .knap_t_video:hover {
-        background-color: var(--skrift);
-        color: var(--baggrund);
-        border-radius: 10px;
-        border: 2px solid var(--brun);
-        padding: 10px 25px;
-        cursor: pointer;
-      }
-      .knap_video {
-        margin: 30px 0px;
-      }
-      .ingredienser_boks {
-        background-color: var(--brun);
-        border-radius: 10px;
-        padding: 10px 10px;
-        margin-bottom: 20px;
-        font-family: lora;
-        font-size: 13px;
-        color: var(--skrift);
-        list-style-position: inside;
-        /* list-style-position gør, at punktformen (•) placeres inden for boksen, sammen med teksten.
+  /* FONTE */
+  h1 {
+    padding-top: 25px;
+    text-transform: uppercase;
+    font-size: 40px;
+    text-align: center;
+  }
+  h2 {
+    font-size: 20px;
+    padding: 7px 0px;
+  }
+  .større_h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+  p {
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .anmeldelse {
+    font-style: italic;
+    text-align: center;
+  }
+  a {
+    font-size: 13px;
+    font-family: "Lora";
+  }
+  /* FONTE */
+  .img_opskrift {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block; /* vigtigt for at margin: auto virker på img */
+    margin: 0 auto; /* centrerer billedet vandret */
+  }
+  .knapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 1rem 0 2rem 0rem;
+  }
+  .knap_intro {
+    background-color: var(--brun);
+    border-radius: 10px;
+    padding: 10px 25px;
+    width: 200px;
+  }
+  .beskrivelse_section,
+  .fremgang_section,
+  .anmeldelser_section {
+    margin: 2rem 0rem;
+  }
+  .knap_t_video {
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  .knap_t_video:hover {
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    border-radius: 10px;
+    border: 2px solid var(--brun);
+    padding: 10px 25px;
+    cursor: pointer;
+  }
+  .knap_video {
+    margin: 30px 0px;
+  }
+  .border {
+    border: 1px solid var(--brun);
+    width: 100%;
+    margin: 2rem auto;
+  }
+
+  .svg_ikoner {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .skaerm_taendt,
+  .favorit_ikon {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .favorit_ikon img:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .skiftContainer {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: var(--skrift);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Cirklen */
+  .cirkel_t_ikon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Aktiveret tilstand */
+  .switch-on .cirkel_t_ikon {
+    left: 28px;
+  }
+  /* Switch baggrund (knap) */
+  .skiftContainer.switch-on {
+    background-color: var(--oplev);
+  }
+  .ingredienser_boks {
+    background-color: var(--brun);
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    font-family: lora;
+    font-size: 13px;
+    color: var(--skrift);
+    list-style-position: inside;
+    /* list-style-position gør, at punktformen (•) placeres inden for boksen, sammen med teksten.
 
  */
-      }
-      .anmeldelser {
-        padding: 10px;
-        margin-top: 15px;
-      }
-      .video_section {
-      }
+  }
+  /*At bruge en responsiv wrapper omkring <iframe> betyder det, at man lægger <iframe>-elementet ind i en <div>, som styrer størrelsen og proportionerne (aspect ratio) */
+  .video_wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* padding-bottom: 56.25% skaber højde baseret på bredden (16:9 = 9/16 = 0.5625). */
+    height: 0;
+    overflow: hidden; /* skjuler alt indhold, der går uden for containeren */
+    border-radius: 10px;
+  }
+  .video_wrapper iframe {
+    position: absolute; /* gør, at iframe placeres oven på video_wrapper */
+    top: 0; /*At sætte top: 0 og left: 0 betyder: Start placeringen af iframe i øverste venstre hjørne af wrapperen. */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .anmeldelser {
+    padding: 10px;
+    margin-top: 15px;
+  }
+  .knap_send {
+    display: inline-block; /* gør den kun så bred som indholdet */
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px 0px;
+    cursor: pointer;
+  }
+  .knap_send:hover {
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    border-radius: 10px;
+    border: 2px solid var(--brun);
+  }
 
-      .knap_send {
-        display: inline-block; /* gør den kun så bred som indholdet */
-        background-color: var(--skrift);
-        color: var(--baggrund);
-        border-radius: 10px;
-        padding: 10px 20px;
-        margin: 10px 0px;
-        cursor: pointer;
-      }
-      .knap_send:hover {
-        background-color: var(--skrift);
-        color: var(--baggrund);
-        border-radius: 10px;
-        border: 2px solid var(--brun);
-      }
+  .kommentar_section {
+    background-color: var(--baggrund);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  .mindste_kasser {
+    display: flex;
+    gap: 10px;
+  }
 
-      .kommentar_section {
-        background-color: var(--baggrund);
-        padding: 20px;
-        border-radius: 10px;
-      }
+  .kommentar_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  .kommentar_form input,
+  .kommentar_form textarea {
+    padding: 10px;
+    border: 1px solid var(--brun);
+    border-radius: 8px;
+    font-family: "Lora";
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .kommentar_form input::placeholder,
+  .kommentar_form textarea::placeholder {
+    color: #888; /* grå farve */
+    font-size: 13px;
+    font-family: "Lora";
+  }
+  /* ------MOBILE SLUT-------- */
 
-      .kommentar_form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 25px;
-      }
-      .kommentar_form input,
-      .kommentar_form textarea {
-        padding: 10px;
-        border: 1px solid var(--brun);
-        border-radius: 8px;
-        font-family: "Lora";
-        font-size: 15px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .kommentar_form input::placeholder,
-      .kommentar_form textarea::placeholder {
-        color: #888; /* grå farve */
-        font-size: 13px;
-        font-family: "Lora";
-      }
+  /* ------DESKTOP FORMAT------ */
 
-      /* DESKTOP FORMAT */
-      @media (min-width: 850px) {
-      }
-    </style>
-  </body>
-</html>
+  @media (min-width: 850px) {
+    h1 {
+      font-size: 90px;
+    }
+    .img_opskrift {
+      width: 70%;
+    }
+    .knapper {
+      flex-direction: row;
+      margin: 2rem 8rem;
+    }
+    .border {
+      border: 1px solid var(--brun);
+      width: 75%;
+      margin: 3rem auto;
+    }
+    h2 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 18px;
+    }
+    a {
+      font-size: 18px;
+    }
+    .knap_t_video {
+      padding: 12px 20px;
+    }
+    .fremgang_section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem; /* styrer afstanden mellem kolonnerne */
+      align-items: start;
+      margin: 5rem 0rem;
+    }
+
+    .ingredienser_boks,
+    .fremgangsmade_boks {
+      margin: 0; /* fjerner ekstra luft */
+      width: 100%; /* udnytter hele cellens bredde */
+    }
+    .ingredienser_boks {
+      padding: 10px 5px 15px 25px;
+      /* 25=venstre, 15=nederst, 10=øverst, 5=højre */
+    }
+    li {
+      font-size: 18px;
+    }
+    .større_h2 {
+      font-size: 40px;
+    }
+    .video_wrapper {
+      margin: 2rem 0rem;
+    }
+    .alle_anmeldelser {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; /* styrer afstanden mellem kolonnerne */
+      align-items: start;
+    }
+    .kommentar_section {
+      max-width: 400px;
+      margin: 0 auto 4rem auto;
+    }
+    .navne_anmeldelser {
+      font-size: 20px;
+    }
+    .intro_t_kommentar {
+      text-align: center;
+    }
+  }
+</style>
