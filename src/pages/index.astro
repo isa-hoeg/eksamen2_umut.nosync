@@ -38,7 +38,7 @@ import Footer from "../components/Footer.astro";
     <section class="hero">
       <div class="ramme">
         <div class="grid_1-1">
-          <img src="/imgs/Umut_.webp" alt="" class="umut_img" />
+          <img src="" alt="" class="umut_img" />
           <div class="velkommen">
             <h1>VELKOMMEN</h1>
             <p>Hej, jeg hedder Umut.</p>
@@ -152,7 +152,7 @@ import Footer from "../components/Footer.astro";
     <section class="some">
       <div class="ramme">
         <h1>FØLG MED HER</h1>
-        <div class="grid_1-1-1">
+        <div class="flex">
           <a href="https://www.youtube.com/@umutsakarya5878" class="some_ikon">
             <img src="/imgs/yt_ikon.svg" alt="" />
             <p>@umutsakarya5878</p>
@@ -184,6 +184,16 @@ import Footer from "../components/Footer.astro";
 <style>
   /* MOBIL FORMAT */
 
+  /* ILLUSTRATIONER */
+  .hero {
+    background-image: url(/svg_forside/artiskok.svg);
+    background-position: 100% 60%;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 240px; /* eller fx 50%, contain, eller cover */
+  }
+
   .border {
     border: 1px solid var(--brun);
     width: 75%;
@@ -195,12 +205,12 @@ import Footer from "../components/Footer.astro";
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 55px;
   }
 
   p {
     font-size: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 15px;
   }
 
@@ -216,11 +226,17 @@ import Footer from "../components/Footer.astro";
     background-color: var(--skrift);
     color: var(--baggrund);
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 50px;
     border-radius: 10px;
+    border: 4px solid var(--skrift);
     a {
       color: var(--baggrund);
     }
+  }
+
+  .tilmeld_knap:hover {
+    border: 4px solid var(--brun);
   }
 
   .smagcards {
@@ -228,8 +244,8 @@ import Footer from "../components/Footer.astro";
   }
 
   .smag {
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
   .smag_knap {
     margin-top: 40px;
@@ -238,15 +254,19 @@ import Footer from "../components/Footer.astro";
     color: var(--skrift);
     padding: 12px;
     border-radius: 10px;
+    border: 4px solid var(--smag);
     a {
       color: var(--skrift);
     }
   }
 
+  .smag_knap:hover {
+    border: 4px solid var(--brun);
+  }
+
   .oplev {
-    margin-top: 70px;
-    margin-bottom: 70px;
-    /* border-top: 2px solid var(--brun); */
+    padding-top: 100px;
+    padding-bottom: 70px;
   }
 
   .udforsk_knap {
@@ -255,10 +275,16 @@ import Footer from "../components/Footer.astro";
     color: var(--skrift);
     padding: 12px;
     border-radius: 10px;
+    border: 4px solid var(--oplev);
     a {
       color: var(--skrift);
     }
     margin-bottom: 50px;
+    margin-top: 20px;
+  }
+
+  .udforsk_knap:hover {
+    border: 4px solid var(--brun);
   }
 
   .rejs_img {
@@ -284,8 +310,8 @@ import Footer from "../components/Footer.astro";
   }
 
   .skab {
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 
   .skab_knapper {
@@ -297,13 +323,14 @@ import Footer from "../components/Footer.astro";
       font-size: 15px;
       background-color: var(--skab);
       color: var(--baggrund);
+      border: 4px solid var(--skab);
     }
   }
 
   .some {
     text-align: center;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 
   .some_ikon {
@@ -329,12 +356,77 @@ import Footer from "../components/Footer.astro";
 
   /* DESKTOP FORMAT */
   @media (min-width: 850px) {
-    .velkommen {
-      margin-top: 70px;
-      h1 {
-        font-size: 90px;
-      }
+    /* ILLUSTRATIONER */
+    .hero {
+      background-image: url(/svg_forside/artiskok.svg);
+      background-position: 100% 0;
+      background-repeat: no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 400px; /* eller fx 50%, contain, eller cover */
     }
+
+    .smag {
+      background-image:
+        url(/svg_forside/citroner.svg), url(/svg_forside/aert_foraarsloeg.svg);
+      background-position:
+        left bottom,
+        right calc(100% - 520px);
+      background-repeat: no-repeat, no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 150px, 400px; /* eller fx 50%, contain, eller cover */
+    }
+
+    .oplev {
+      background-image:
+        url(/svg_forside/broccoli.svg), url(/svg_forside/lille_tomat.svg),
+        url(/svg_forside/mellem_tomat.svg),
+        url(/svg_forside/groenne_foraarsloeg.svg);
+      background-position:
+        right top,
+        calc(85% - 520px) top,
+        calc(70% - 520px) bottom,
+        left calc(70% - 250px);
+      background-repeat: no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 250px, 150px, 300px, 200px;
+    }
+
+    .skab {
+      background-image:
+        url(/svg_forside/roed_stor_tomat.svg), url(/svg_forside/roed_chili.svg),
+        url(/svg_forside/stor_tomat.svg);
+      background-position:
+        left center,
+        center top,
+        right calc(100% - 400px);
+      background-repeat: no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 100px, 200px, 150px;
+    }
+
+    .some {
+      background-image: url(/svg_forside/hvidloeg.svg);
+      background-position:;
+      background-repeat: no-repeat;
+      height: auto;
+      width: 100%;
+      background-size: 200px; /* eller fx 50%, contain, eller cover */
+    }
+
+    /* DESKTOP CSS */
+
+    .velkommen {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 90px;
+    }
+
     p {
       font-size: 20px;
     }
@@ -376,9 +468,9 @@ import Footer from "../components/Footer.astro";
       font-size: 24px;
     }
 
-    .grid_1-1-1 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .flex {
+      display: flex;
+      justify-content: center;
     }
 
     .smagcards {
