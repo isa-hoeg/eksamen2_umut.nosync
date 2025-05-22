@@ -49,8 +49,9 @@ import Filter from "../components/Filter.astro";
     </section>
     <section class="opskrifter">
       <div class="ramme">
-        <OpskriftCard />
-        {data.map((opskrift) => <OpskriftCard />)}
+        <div class="masonry">
+          {data.map((opskrift) => <OpskriftCard opskrift={opskrift} />)}
+        </div>
       </div>
     </section>
     <section class="nyhedsbrev">
@@ -62,6 +63,13 @@ import Filter from "../components/Filter.astro";
 
   <style>
     /* MOBIL FORMAT */
+    .masonry {
+      column-count: 2;
+    }
+    .masonry > * {
+      break-inside: avoid;
+      margin-bottom: 1rem; /* juster spacing efter behov */
+    }
     .hero {
       background-image: url("/opskriftside_svg/mad_tallerken.svg");
       background-position: 100%;
@@ -90,6 +98,13 @@ import Filter from "../components/Filter.astro";
     @media (min-width: 850px) {
       h1 {
         font-size: 80px;
+      }
+      .masonry {
+        column-count: 3;
+      }
+      .masonry > * {
+        break-inside: avoid;
+        margin-bottom: 1rem; /* juster spacing efter behov */
       }
     }
   </style>

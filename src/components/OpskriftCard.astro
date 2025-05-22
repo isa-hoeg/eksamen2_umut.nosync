@@ -1,18 +1,14 @@
 ---
 //ts@no-check
 import "../styles/style.css";
-const { opskrifter } = Astro.props;
+const { opskrift } = Astro.props;
 ---
 
 <article class="card">
-  <img
-    class="card-image"
-    src="/imgs/frokost/ceasar.webp"
-    alt="Hot honey chicken burger"
-  />
+  <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" class="card-image" />
   <div class="text-overlay">
-    <h3>Cæsar Salat</h3>
-    <p>Frokost/Aftensmad</p>
+    <h3>{opskrift.opskrift_titel}</h3>
+    <p>{opskrift.opskrift_type}</p>
   </div>
 </article>
 
