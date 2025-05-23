@@ -1,7 +1,76 @@
-<style>
-  /* MOBIL FORMAT */
+---
+import "../styles/style.css";
+---
 
-  /* DESKTOP FORMAT */
+<div class="filter-container">
+  <details>
+    <summary>Måltidstype</summary>
+    <p><input type="checkbox" />Morgenmad</p>
+    <p><input type="checkbox" />Frokost</p>
+    <p><input type="checkbox" />Aftensmad</p>
+    <p><input type="checkbox" />Bagværk/Dessert</p>
+    <p><input type="checkbox" />Forret/Appetizers</p>
+  </details>
+
+  <details>
+    <summary>Ingrediens</summary>
+    <p><input type="checkbox" />Aftensmad</p>
+    <p><input type="checkbox" />Morgenmad</p>
+    <p><input type="checkbox" />Frokost</p>
+    <p><input type="checkbox" />Forretter/Apetizers</p>
+  </details>
+  <details>
+    <summary>Varighed</summary>
+    <p><input type="checkbox" />Aftensmad</p>
+    <p><input type="checkbox" />Morgenmad</p>
+    <p><input type="checkbox" />Frokost</p>
+    <p><input type="checkbox" />Forretter/Apetizers</p>
+  </details>
+
+  <details>
+    <summary>Verdenskøkken</summary>
+    <p><input type="checkbox" />Italiensk</p>
+    <p><input type="checkbox" />Asiatisk</p>
+    <p><input type="checkbox" />Tyrkisk</p>
+    <p><input type="checkbox" />Svensk</p>
+    <p><input type="checkbox" />Fransk</p>
+    <p><input type="checkbox" />Græsk</p>
+    <p><input type="checkbox" />Indonesisk</p>
+    <p><input type="checkbox" />Dansk</p>
+  </details>
+</div>
+<style>
+  details {
+    text-align: start;
+    background-color: var(--brun);
+    border-radius: 7px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 5px 20px; /* 0px top/bund, 20px venstre/højre */
+    margin-right: 20px;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  summary {
+    color: var(--skrift);
+    font-size: 14px;
+    
+  }
+  p {
+    font-size: 14px;
+   
+  }
+
   @media (min-width: 850px) {
+    .filter-container {
+      gap: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    summary, p {
+      color: var(--skrift);
+      font-size: 16px;
+     
+    }
   }
 </style>

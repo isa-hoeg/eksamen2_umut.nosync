@@ -42,11 +42,15 @@ import Filter from "../components/Filter.astro";
         <h1>OPSKRIFTER</h1>
         <h3>Mad med sjæl, smag og sanselighed</h3>
         <p>Hos Umut handler mad ikke bare om opskrifter – det handler om minder, nysgerrighed og kærlighed til råvarer. Her på siden kan du gå på opdagelse i hans univers: Fra klassiske livretter til nye fortolkninger, altid med smagen i centrum. Brug siden til at finde inspiration, skabe dine egne variationer og gemme dine favoritter. Det er mad med personlighed – lige til at gå til.</p>
+        <!-- <section class="filter"> -->
+        <div class="ramme">
+          <h2>Filtrér din mad</h2>
+          <Filter />
+        </div>
+        <!-- </section> -->
       </div>
     </section>
-    <section class="filter">
-      <div class="ramme"></div>
-    </section>
+
     <section class="opskrifter">
       <div class="ramme">
         <div class="masonry">
@@ -63,31 +67,39 @@ import Filter from "../components/Filter.astro";
 
   <style>
     /* MOBIL FORMAT */
+
     .masonry {
       column-count: 2;
+      column-gap: 10px; /* eller mindre – fx 5px, 0px */
     }
-    .masonry > * {
-      break-inside: avoid;
-      margin-bottom: 1rem; /* juster spacing efter behov */
-    }
+
     .hero {
       background-image: url("/opskriftside_svg/mad_tallerken.svg");
       background-position: 100%;
       background-repeat: no-repeat;
       height: auto;
       width: 100%;
-      background-size: 150px; /* eller fx 50%, contain, eller cover */
+      background-size: 120px; /* eller fx 50%, contain, eller cover */
+      background-position: right 5px; /* 40px ned fra toppen */
     }
     h1 {
-      font-size: 40px;
+      margin-top: 40px;
+      font-size: 55px;
       text-align: center;
+    }
+    h2 {
+      text-align: center;
+      font-size: 19px;
+      margin-bottom: 20px;
     }
     h3 {
       text-align: center;
+      /* margin-bottom: 20px; */
+      font-size: 18px;
     }
 
     p {
-      font-size: 15px;
+      font-size: 13px;
       margin-top: 15px;
       margin-bottom: 15px;
       text-align: center;
@@ -96,15 +108,31 @@ import Filter from "../components/Filter.astro";
 
     /* DESKTOP FORMAT */
     @media (min-width: 850px) {
+      p {
+        margin-left: 90px;
+        margin-right: 90px;
+      }
+      .hero {
+        height: auto;
+        width: 100%;
+        background-image: url("/opskriftside_svg/mad_2.svg"), url("/opskriftside_svg/oliven_2.svg");
+        background-repeat: no-repeat, no-repeat;
+        background-size: 320px, 220px;
+        background-position:
+          100% -60px,
+          -60px 30px; /* ← én til højre, én til venstre */
+      }
       h1 {
         font-size: 80px;
+        text-align: center;
+        margin-top: 40px;
+      }
+      h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
       }
       .masonry {
         column-count: 3;
-      }
-      .masonry > * {
-        break-inside: avoid;
-        margin-bottom: 1rem; /* juster spacing efter behov */
       }
     }
   </style>
