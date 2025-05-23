@@ -58,8 +58,8 @@ const ingredienser = opskrift.opskrift_ingredienser
   <body>
     <Header />
     <main>
-      <div class="ramme">
-        <section class="intro_section">
+      <section class="intro_section">
+        <div class="ramme">
           <h1>{opskrift.opskrift_titel}</h1>
           <img
             src={`/imgs/${opskrift.opskrift_img}`}
@@ -77,58 +77,91 @@ const ingredienser = opskrift.opskrift_ingredienser
               <h3>4 personer</h3>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="beskrivelse_section">
+      <section class="beskrivelse_section">
+        <div class="ramme">
           <h2>Beskrivelse:</h2>
           <p>{opskrift.opskrift_beskrivelse}</p>
           <div class="knap_video">
             <a href="#video_section" class="knap_t_video">Gå til video her!</a>
           </div>
-        </section>
-        <div class="border"></div>
-        <div class="svg_ikoner">
-          <div class="skaerm_taendt">
-            <div class="skiftContainer" id="skift">
-              <img
-                src="../../../public/imgs/cirkel_t_ikon.svg"
-                alt="cirkel"
-                class="cirkel_t_ikon"
-              />
-            </div>
-            <p>Hold skærmen tændt</p>
-          </div>
+          <div class="border"></div>
+        </div>
+      </section>
 
-          <div class="favorit_ikon">
-            <img src="../../../public/imgs/heart.svg" alt="heart" />
-            <p>Føj til mine favoritter</p>
+      <!-- <div class="ramme">
+        <div class="indhold_med_ikoner">
+          <div class="svg_ikoner">
+            <div class="skaerm_taendt">
+              <div class="skiftContainer" id="skift">
+                <img
+                  src="../../../public/imgs/cirkel_t_ikon.svg"
+                  alt="cirkel"
+                  class="cirkel_t_ikon"
+                />
+              </div>
+              <p>Hold skærmen tændt</p>
+            </div>
+
+            <div class="favorit_ikon">
+              <img src="../../../public/imgs/heart.svg" alt="heart" />
+              <p>Føj til mine favoritter</p>
+            </div>
           </div>
         </div>
+      </div> -->
 
-        <section class="fremgang_section">
-          <div class="ingredienser_boks">
-            <h2>Ingredienser:</h2>
-            <ul>
-              {
-                /*
+      <section class="fremgang_section">
+        <div class="ramme">
+          <div class="indhold_med_ikoner">
+            <div class="svg_ikoner">
+              <div class="skaerm_taendt">
+                <div class="skiftContainer" id="skift">
+                  <img
+                    src="../../../public/imgs/cirkel_t_ikon.svg"
+                    alt="cirkel"
+                    class="cirkel_t_ikon"
+                  />
+                </div>
+                <p>Hold skærmen tændt</p>
+              </div>
+
+              <div class="favorit_ikon">
+                <img src="../../../public/imgs/heart.svg" alt="heart" />
+                <p>Føj til mine favoritter</p>
+              </div>
+            </div>
+          </div>
+          <div class="fremgang_div">
+            <div class="ingredienser_boks">
+              <h2>Ingredienser:</h2>
+              <ul>
+                {
+                  /*
                  Går igennem hver ingrediens i array’et og viser den som et <li>.
                  'index' er positionen i array’et (0, 1, 2...) og bruges som 'key'.
                 */
-              }
-              {
-                ingredienser.map((ingrediens, index) => (
-                  <li key={index}>{ingrediens}</li>
-                ))
-              }
-            </ul>
+                }
+                {
+                  ingredienser.map((ingrediens, index) => (
+                    <li key={index}>{ingrediens}</li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="fremgangsmade_boks">
+              <h2>Fremgangsmåde:</h2>
+              <p>{opskrift.opskrift_fremgang}</p>
+            </div>
           </div>
-          <div class="fremgangsmade_boks">
-            <h2>Fremgangsmåde:</h2>
-            <p>{opskrift.opskrift_fremgang}</p>
-          </div>
-        </section>
-        <div class="border"></div>
-        <section id="video_section">
+          <div class="border"></div>
+        </div>
+      </section>
+
+      <section id="video_section">
+        <div class="ramme">
           <h2 class="større_h2">Kom i køkkenet med Umut!</h2>
           <div class="video_wrapper">
             <iframe
@@ -143,8 +176,10 @@ const ingredienser = opskrift.opskrift_ingredienser
             </iframe>
           </div>
           <div class="border"></div>
-        </section>
-        <section class="anmeldelser_section">
+        </div>
+      </section>
+      <section class="anmeldelser_section">
+        <div class="ramme">
           <h2 class="større_h2">Hvad andre synes!</h2>
           <div class="alle_anmeldelser">
             <div class="anmeldelser">
@@ -169,62 +204,67 @@ const ingredienser = opskrift.opskrift_ingredienser
               </p>
             </div>
           </div>
-        </section>
 
-        <div class="border"></div>
-        <section class="kommentar_section">
-          <h2 class="større_h2">Hvad synes du om opskrifterne?</h2>
-          <p class="intro_t_kommentar">
-            Skriv her, hvad du synes om opskriften, eller om du gjorde noget
-            andet, som også fungerede over forventning, så jeg og andre kan få
-            tips og tricks.
-          </p>
-          <form class="kommentar_form">
-            <div class="mindste_kasser">
-              <input
-                type="text"
-                id="navn"
-                name="navn"
-                placeholder="Dit navn"
-                required
-              />
+          <div class="border"></div>
+        </div>
+      </section>
 
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                required
-              />
-            </div>
+      <section class="kommentar_section">
+        <div class="ramme">
+          <div class="kommentar_felt">
+            <h2 class="større_h2">Hvad synes du om opskrifterne?</h2>
+            <p class="intro_t_kommentar">
+              Skriv her, hvad du synes om opskriften, eller om du gjorde noget
+              andet, som også fungerede over forventning, så jeg og andre kan få
+              tips og tricks.
+            </p>
+            <form class="kommentar_form">
+              <div class="mindste_kasser">
+                <input
+                  type="text"
+                  id="navn"
+                  name="navn"
+                  placeholder="Dit navn"
+                  required
+                />
 
-            <textarea
-              id="kommentar"
-              name="kommentar"
-              rows="5"
-              placeholder="Skriv din kommentar her..."
-              required></textarea>
-          </form>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
 
-          <p class="knap_send">Send</p>
-        </section>
-      </div>
+              <textarea
+                id="kommentar"
+                name="kommentar"
+                rows="5"
+                placeholder="Skriv din kommentar her..."
+                required></textarea>
+            </form>
+
+            <p class="knap_send">Send</p>
+          </div>
+        </div>
+      </section>
     </main>
-
-    <Footer />
   </body>
-  <!-- Flyt denne HELT nederst før </html> -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const skiftContainer = document.getElementById("skift");
-      if (skiftContainer) {
-        skiftContainer.addEventListener("click", () => {
-          skiftContainer.classList.toggle("switch-on");
-        });
-      }
-    });
-  </script>
+
+  <Footer />
 </html>
+<!-- Flyt denne HELT nederst før </html> -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const skiftContainer = document.getElementById("skift");
+    if (skiftContainer) {
+      skiftContainer.addEventListener("click", () => {
+        skiftContainer.classList.toggle("switch-on");
+      });
+    }
+  });
+</script>
 
 <style>
   /* -------MOBIL FORMAT------- */
@@ -313,9 +353,14 @@ const ingredienser = opskrift.opskrift_ingredienser
   .svg_ikoner {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 10px;
+    padding: 5px 0px 25px 0px;
   }
-
+  .indhold_med_ikoner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
   .skaerm_taendt,
   .favorit_ikon {
     width: 100%;
@@ -323,6 +368,7 @@ const ingredienser = opskrift.opskrift_ingredienser
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin: 0px 10px 0px 0px;
   }
   .favorit_ikon img:hover {
     filter: brightness(1.1);
@@ -443,6 +489,62 @@ const ingredienser = opskrift.opskrift_ingredienser
     font-size: 13px;
     font-family: "Lora";
   }
+
+  /* ILLUSTRATIONER MOBIL */
+  .intro_section {
+    background-image:
+      url(/singleview_svg/tomat.svg), url(/svg_forside/aert_foraarsloeg.svg);
+    background-position:
+      left -0% bottom 10%,
+      right -50% bottom 2%;
+    background-repeat: no-repeat, no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 110px, 240px; /* eller fx 50%, contain, eller cover */
+  }
+  .fremgang_section {
+    background-image:
+      url(/singleview_svg/stor_gul_citron.svg),
+      url(/singleview_svg/gul_citron.svg);
+
+    background-position:
+      left -2% bottom -5%,
+      right -2% bottom 60%;
+    background-repeat: no-repeat, no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 70px, 80px; /* eller fx 50%, contain, eller cover */
+  }
+  #video_section {
+    background-image: url(/singleview_svg/chili.svg);
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100px;
+  }
+  .anmeldelser_section {
+    background-image: url(/singleview_svg/roed_tomat.svg);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 80px;
+  }
+  .kommentar_section {
+    background-image:
+      url(/singleview_svg/tomat_2.svg), url(/singleview_svg/artiskok.svg),
+      url(/svg_forside/aert_foraarsloeg.svg);
+    background-position:
+      right -2% bottom 100%,
+      left -2% bottom 40%,
+      right -5% bottom 0%;
+    background-repeat: no-repeat, no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 70px, 90px, 190px;
+  }
+  /* ILLUSTRATIONER MOBIL SLUT */
   /* ------MOBILE SLUT-------- */
 
   /* ------DESKTOP FORMAT------ */
@@ -475,14 +577,22 @@ const ingredienser = opskrift.opskrift_ingredienser
     .knap_t_video {
       padding: 12px 20px;
     }
-    .fremgang_section {
+    .svg_ikoner {
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+    }
+    .indhold_med_ikoner p {
+      padding: 10px;
+    }
+
+    .fremgang_div {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 3rem; /* styrer afstanden mellem kolonnerne */
       align-items: start;
       margin: 5rem 0rem;
     }
-
     .ingredienser_boks,
     .fremgangsmade_boks {
       margin: 0; /* fjerner ekstra luft */
@@ -507,7 +617,7 @@ const ingredienser = opskrift.opskrift_ingredienser
       gap: 2rem; /* styrer afstanden mellem kolonnerne */
       align-items: start;
     }
-    .kommentar_section {
+    .kommentar_felt {
       max-width: 400px;
       margin: 0 auto 4rem auto;
     }
@@ -517,5 +627,37 @@ const ingredienser = opskrift.opskrift_ingredienser
     .intro_t_kommentar {
       text-align: center;
     }
+
+    /* ILLUSTRATIONER DESKTOP */
+    .intro_section {
+      background-position:
+        left -0% bottom 10%,
+        right -5% top 0%;
+      background-size: 150px, 280px;
+    }
+    .fremgang_section {
+      background-position:
+        left -0% bottom -10%,
+        right -2% top 0%;
+
+      background-size: 100px, 150px;
+    }
+    #video_section {
+      background-position: 100% 0%;
+      background-size: 150px;
+    }
+    .anmeldelser_section {
+      background-position: 0% 60%;
+      background-size: 90px;
+    }
+    .kommentar_section {
+      background-position:
+        right -1% bottom 100%,
+        left 0% bottom 40%,
+        right -5% bottom 10%;
+
+      background-size: 150px, 250px, 250px;
+    }
+    /* ILLUSTRATIONER DESKTOP SLUT */
   }
 </style>
