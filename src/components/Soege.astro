@@ -1,7 +1,58 @@
-<style>
-  /* MOBIL FORMAT */
+<!-- search.astro -->
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Søgefelt</title>
+  </head>
+  <body>
+    <div class="search-container">
+      <!-- klassen search-wrapper forbinder søgefelt og søgeikon inde i samme kasse.  -->
+      <div class="search-wrapper">
+        <input type="text" class="search-input" placeholder="Fx. pastaretter..." />
+        <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="Søgeikon" class="search-icon" />
+      </div>
+    </div>
+  </body>
+  <style>
+    .search-container {
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    /* 
+  .search-wrapper har position: relative, 
+  så vi kan placere søgeikonet præcist inde i input-feltet.
+  Selve søgeikonet har position: absolute og placeres 
+  i forhold til .search-wrapper.
+*/
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
 
-  /* DESKTOP FORMAT */
-  @media (min-width: 850px) {
-  }
-</style>
+    .search-input {
+      width: 100%;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: playfair display;
+      color: var(--skrift);
+      border: 2px solid var(--brun);
+      border-radius: 8px;
+      background-color: var(--brun);
+    }
+
+    .search-input:focus {
+      border-color: var(--brun);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--skrift);
+    }
+  </style>
+</html>
