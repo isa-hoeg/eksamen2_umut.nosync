@@ -16,11 +16,12 @@ const { opskrift } = Astro.props;
   .card {
     position: relative;
     width: 100%;
-    max-width: 300px;
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease;
     cursor: pointer;
+    margin-bottom: 5px;
+    
   }
   .card:hover {
     transform: scale(1.05);
@@ -41,11 +42,24 @@ const { opskrift } = Astro.props;
     background: linear-gradient(to top, rgba(4, 4, 3, 0.5) 70%, transparent);
     color: white;
   }
+
   p {
     color: white;
+   
   }
   h3 {
     color: white;
-    font-size: 25px;
+    font-size: 15px;
+  }
+  @media (min-width: 850px) {
+    h3 {
+      color: white;
+      font-size: 20px;
+    }
+
+  
+    .card {
+      margin-bottom: 20px;
+    }
   }
 </style>
