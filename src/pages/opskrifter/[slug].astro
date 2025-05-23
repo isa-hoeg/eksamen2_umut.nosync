@@ -91,28 +91,49 @@ const ingredienser = opskrift.opskrift_ingredienser
         </div>
       </section>
 
-      <div class="ramme">
-        <div class="svg_ikoner">
-          <div class="skaerm_taendt">
-            <div class="skiftContainer" id="skift">
-              <img
-                src="../../../public/imgs/cirkel_t_ikon.svg"
-                alt="cirkel"
-                class="cirkel_t_ikon"
-              />
+      <!-- <div class="ramme">
+        <div class="indhold_med_ikoner">
+          <div class="svg_ikoner">
+            <div class="skaerm_taendt">
+              <div class="skiftContainer" id="skift">
+                <img
+                  src="../../../public/imgs/cirkel_t_ikon.svg"
+                  alt="cirkel"
+                  class="cirkel_t_ikon"
+                />
+              </div>
+              <p>Hold skærmen tændt</p>
             </div>
-            <p>Hold skærmen tændt</p>
-          </div>
 
-          <div class="favorit_ikon">
-            <img src="../../../public/imgs/heart.svg" alt="heart" />
-            <p>Føj til mine favoritter</p>
+            <div class="favorit_ikon">
+              <img src="../../../public/imgs/heart.svg" alt="heart" />
+              <p>Føj til mine favoritter</p>
+            </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <section class="fremgang_section">
         <div class="ramme">
+          <div class="indhold_med_ikoner">
+            <div class="svg_ikoner">
+              <div class="skaerm_taendt">
+                <div class="skiftContainer" id="skift">
+                  <img
+                    src="../../../public/imgs/cirkel_t_ikon.svg"
+                    alt="cirkel"
+                    class="cirkel_t_ikon"
+                  />
+                </div>
+                <p>Hold skærmen tændt</p>
+              </div>
+
+              <div class="favorit_ikon">
+                <img src="../../../public/imgs/heart.svg" alt="heart" />
+                <p>Føj til mine favoritter</p>
+              </div>
+            </div>
+          </div>
           <div class="fremgang_div">
             <div class="ingredienser_boks">
               <h2>Ingredienser:</h2>
@@ -332,9 +353,14 @@ const ingredienser = opskrift.opskrift_ingredienser
   .svg_ikoner {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 10px;
+    padding: 5px 0px 25px 0px;
   }
-
+  .indhold_med_ikoner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
   .skaerm_taendt,
   .favorit_ikon {
     width: 100%;
@@ -342,6 +368,7 @@ const ingredienser = opskrift.opskrift_ingredienser
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin: 0px 10px 0px 0px;
   }
   .favorit_ikon img:hover {
     filter: brightness(1.1);
@@ -550,6 +577,15 @@ const ingredienser = opskrift.opskrift_ingredienser
     .knap_t_video {
       padding: 12px 20px;
     }
+    .svg_ikoner {
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+    }
+    .indhold_med_ikoner p {
+      padding: 10px;
+    }
+
     .fremgang_div {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
