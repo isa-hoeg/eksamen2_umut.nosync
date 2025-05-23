@@ -90,29 +90,6 @@ const ingredienser = opskrift.opskrift_ingredienser
           <div class="border"></div>
         </div>
       </section>
-
-      <!-- <div class="ramme">
-        <div class="indhold_med_ikoner">
-          <div class="svg_ikoner">
-            <div class="skaerm_taendt">
-              <div class="skiftContainer" id="skift">
-                <img
-                  src="../../../public/imgs/cirkel_t_ikon.svg"
-                  alt="cirkel"
-                  class="cirkel_t_ikon"
-                />
-              </div>
-              <p>Hold skærmen tændt</p>
-            </div>
-
-            <div class="favorit_ikon">
-              <img src="../../../public/imgs/heart.svg" alt="heart" />
-              <p>Føj til mine favoritter</p>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
       <section class="fremgang_section">
         <div class="ramme">
           <div class="indhold_med_ikoner">
@@ -181,27 +158,76 @@ const ingredienser = opskrift.opskrift_ingredienser
       <section class="anmeldelser_section">
         <div class="ramme">
           <h2 class="større_h2">Hvad andre synes!</h2>
-          <div class="alle_anmeldelser">
-            <div class="anmeldelser">
-              <h3 class="navne_anmeldelser">Anette</h3>
-              <p class="anmeldelse">
-                "Jeg har aldrig været så glad for at lave mad, som jeg er nu.
-                Tak Umut!"
-              </p>
-            </div>
-            <div class="anmeldelser">
-              <h3 class="navne_anmeldelser">Mogens</h3>
-              <p class="anmeldelse">
-                "Super opskrift! Det smagede fantastisk og var super nemt at
-                lave!"
-              </p>
-            </div>
-            <div class="anmeldelser">
-              <h3 class="navne_anmeldelser">Henriette</h3>
-              <p class="anmeldelse">
-                "Mine børn elsker det! De vil gerne have det hver dag. Tak
-                Umut!"
-              </p>
+
+          <div class="carousel-wrapper">
+            <div class="alle_anmeldelser">
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Anette</h3>
+                <p class="anmeldelse">
+                  "Jeg har aldrig været så glad for at lave mad, som jeg er nu.
+                  Tak Umut!"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Mogens</h3>
+                <p class="anmeldelse">
+                  "Super opskrift! Det smagte fantastisk og var super nemt at
+                  lave!"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Henriette</h3>
+                <p class="anmeldelse">
+                  "Mine børn elsker det! De vil gerne have det hver dag. Tak
+                  Umut!"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Sarah</h3>
+                <p class="anmeldelse">
+                  "Du har gjort det igen Umut! Fantastisk opskrift. De smager
+                  himmelsk"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Kenneth</h3>
+                <p class="anmeldelse">
+                  "5/5 stjerner. Mega lækker opskrift og ideel til at have med
+                  på farten"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Camilla</h3>
+                <p class="anmeldelse">
+                  "Jeg elsker dine opskrifter. Nem ret og smager skønt"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Lukas</h3>
+                <p class="anmeldelse">
+                  "Tak for opskriften. Vi er vilde med den herhjemme:)"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Anna-Sofie</h3>
+                <p class="anmeldelse">
+                  "Har prøvet flere forskellige opskrifter til denne ret, men
+                  dette er da en sikker vinder"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Joakim</h3>
+                <p class="anmeldelse">
+                  "Smager skønt, og så er opskriften lige til at gå til!"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Carsten</h3>
+                <p class="anmeldelse">
+                  "Tak for lækker mad Umut! Konen er glad, og det er min mave
+                  også"
+                </p>
+              </div>
             </div>
           </div>
 
@@ -545,6 +571,34 @@ const ingredienser = opskrift.opskrift_ingredienser
     background-size: 70px, 90px, 190px;
   }
   /* ILLUSTRATIONER MOBIL SLUT */
+
+  /* karusel til kommentarer */
+  .carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+  .alle_anmeldelser {
+    display: flex;
+    width: max-content; /* Sørger for at bredden passer til antal anmeldelser */
+    animation: scroll 60s linear infinite;
+  }
+  .anmeldelser {
+    width: 250px;
+    margin-right: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Animationen */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
   /* ------MOBILE SLUT-------- */
 
   /* ------DESKTOP FORMAT------ */
@@ -611,12 +665,12 @@ const ingredienser = opskrift.opskrift_ingredienser
     .video_wrapper {
       margin: 2rem 0rem;
     }
-    .alle_anmeldelser {
+    /* .alle_anmeldelser {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem; /* styrer afstanden mellem kolonnerne */
-      align-items: start;
-    }
+    /* align-items: start; */
+
     .kommentar_felt {
       max-width: 400px;
       margin: 0 auto 4rem auto;
