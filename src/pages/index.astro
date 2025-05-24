@@ -37,8 +37,8 @@ import Footer from "../components/Footer.astro";
     <Header />
     <section class="hero">
       <div class="ramme">
-        <div class="grid_1-1">
-          <img src="" alt="" class="umut_img" />
+        <div class="hero_grid">
+          <img src="/imgs/umut_cropped.webp" alt="" class="umut_img" />
           <div class="velkommen">
             <h1>VELKOMMEN</h1>
             <p>Hej, jeg hedder Umut.</p>
@@ -187,13 +187,62 @@ import Footer from "../components/Footer.astro";
   /* ILLUSTRATIONER */
   .hero {
     background-image: url(/svg_forside/artiskok.svg);
-    background-position: 100% 60%;
+    background-position: right center;
     background-repeat: no-repeat;
     height: auto;
     width: 100%;
-    background-size: 240px; /* eller fx 50%, contain, eller cover */
+    background-size: 230px; /* eller fx 50%, contain, eller cover */
   }
 
+  .smag {
+    background-image:
+      url(/svg_forside/citroner.svg), url(/svg_forside/aert_foraarsloeg.svg);
+    background-position:
+      left bottom,
+      right top;
+    background-repeat: no-repeat, no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100px, 200px; /* eller fx 50%, contain, eller cover */
+  }
+
+  .oplev {
+    background-image:
+      url(/svg_forside/broccoli.svg), url(/svg_forside/lille_tomat.svg),
+      url(/svg_forside/mellem_tomat.svg), url(/svg_forside/fly.svg);
+    background-position:
+      right top,
+      right calc(100% - 260px),
+      calc(100% - 250px) bottom,
+      right center;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 175px, 100px, 200px, 290px;
+  }
+
+  .skab {
+    background-image:
+      url(/svg_forside/roed_stor_tomat.svg), url(/svg_forside/roed_chili.svg),
+      url(/svg_forside/stor_tomat.svg);
+    background-position:
+      left calc(100% - 650px),
+      right top,
+      right calc(100% - 300px);
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 60px, 150px, 60px;
+  }
+
+  .some {
+    background-image: url(/svg_forside/hvidloeg.svg);
+    background-position: calc(15% - 50px) calc(100% - 50px);
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 150px; /* eller fx 50%, contain, eller cover */
+  }
   .border {
     border: 1px solid var(--brun);
     width: 75%;
@@ -201,7 +250,12 @@ import Footer from "../components/Footer.astro";
   .hero {
     img {
       width: 100%;
+      margin-bottom: 20px;
     }
+  }
+
+  .hero_grid {
+    margin-top: 50px;
   }
 
   h1 {
@@ -226,8 +280,8 @@ import Footer from "../components/Footer.astro";
     background-color: var(--skrift);
     color: var(--baggrund);
     padding: 12px;
-    margin-top: 15px;
-    margin-bottom: 50px;
+    margin-top: 35px;
+    margin-bottom: 75px;
     border-radius: 10px;
     border: 4px solid var(--skrift);
     a {
@@ -359,7 +413,7 @@ import Footer from "../components/Footer.astro";
     /* ILLUSTRATIONER */
     .hero {
       background-image: url(/svg_forside/artiskok.svg);
-      background-position: 100% 0;
+      background-position: right calc(100% - 250px);
       background-repeat: no-repeat;
       height: auto;
       width: 100%;
@@ -382,16 +436,17 @@ import Footer from "../components/Footer.astro";
       background-image:
         url(/svg_forside/broccoli.svg), url(/svg_forside/lille_tomat.svg),
         url(/svg_forside/mellem_tomat.svg),
-        url(/svg_forside/groenne_foraarsloeg.svg);
+        url(/svg_forside/groenne_foraarsloeg.svg), url(/svg_forside/fly.svg);
       background-position:
         right top,
-        calc(85% - 520px) top,
+        calc(85% - 525px) top,
         calc(70% - 520px) bottom,
-        left calc(70% - 250px);
+        left calc(70% - 250px),
+        right bottom;
       background-repeat: no-repeat;
       height: auto;
       width: 100%;
-      background-size: 250px, 150px, 300px, 200px;
+      background-size: 250px, 150px, 300px, 200px, 400px;
     }
 
     .skab {
@@ -429,6 +484,13 @@ import Footer from "../components/Footer.astro";
 
     p {
       font-size: 20px;
+    }
+
+    .hero_grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 50px;
     }
     .grid_1-1 {
       display: grid;
