@@ -20,8 +20,7 @@ const { opskrift } = Astro.props;
     overflow: hidden;
     transition: transform 0.3s ease;
     cursor: pointer;
-    margin-bottom: 5px;
-    
+    margin-bottom: 15px;
   }
   .card:hover {
     transform: scale(1.05);
@@ -39,13 +38,12 @@ const { opskrift } = Astro.props;
     bottom: 0;
     width: 100%;
     padding: 16px;
-    background: linear-gradient(to top, rgba(4, 4, 3, 0.5) 70%, transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.15) 85%, rgba(0, 0, 0, 0.05) 95%, rgba(0, 0, 0, 0.01) 98%, rgba(0, 0, 0, 0) 100%);
     color: white;
   }
 
   p {
     color: white;
-   
   }
   h3 {
     color: white;
@@ -57,7 +55,6 @@ const { opskrift } = Astro.props;
       font-size: 20px;
     }
 
-  
     .card {
       margin-bottom: 20px;
     }
