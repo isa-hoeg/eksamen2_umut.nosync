@@ -70,11 +70,10 @@ import Filter from "../components/Filter.astro";
   <Footer />
 
   <style>
-    /* MOBIL FORMAT */
-
+  
     .masonry {
-      column-count: 2;
-      column-gap: 10px; 
+      column-count: 1;
+      column-gap: 10px;
     }
 
     .hero {
@@ -85,17 +84,17 @@ import Filter from "../components/Filter.astro";
       background-size: 120px, 160px;
       background-position:
         100% -30px,
-        -60px 100px; 
+        -60px 100px;
     }
     .opskrifter {
-      min-height: 1200px;
+      min-height: 1800px;
       background-image: url("/opskriftside_svg/groenne_aerter.svg"), url("/opskriftside_svg/roede_blade2.svg"), url("/opskriftside_svg/hvidloeg.svg");
       background-repeat: no-repeat, no-repeat, no-repeat;
       background-size: 180px, 300px, 160px;
       background-position:
         100% 0px,
         -70px 600px,
-        120% 1510px;
+        120% 1900px;
     }
 
     h1 {
@@ -139,7 +138,7 @@ import Filter from "../components/Filter.astro";
         background-size: 320px, 220px;
         background-position:
           100% -60px,
-          -60px 30px; 
+          -60px 30px;
       }
       .opskrifter {
         min-height: 3000px;
@@ -163,7 +162,9 @@ import Filter from "../components/Filter.astro";
       }
       .masonry {
         column-count: 3;
+        column-gap: 20px;
       }
     }
+  
   </style>
 </html>
