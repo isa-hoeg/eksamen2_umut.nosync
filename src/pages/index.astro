@@ -18,6 +18,7 @@ import Header from "../components/Header.astro";
 import SmagCard from "../components/SmagCard.astro";
 import Nyhedsbrev from "../components/Nyhedsbrev.astro";
 import Footer from "../components/Footer.astro";
+import Knap from "../components/Knap.astro";
 ---
 
 <!doctype html>
@@ -31,7 +32,7 @@ import Footer from "../components/Footer.astro";
       href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Umut Sakarya</title>
   </head>
   <body>
     <Header />
@@ -55,9 +56,7 @@ import Footer from "../components/Footer.astro";
               perfekt, eller en kommende rejse - uden en ide om hvor du bør
               spise - så kan du her på siden finde inspiration og vejledning.
             </p>
-            <div class="tilmeld_knap">
-              <a href="">Tilmeld nyhedsbrevet</a>
-            </div>
+            <Knap variant="tilmeld">Tilmeld nyhedsbrev</Knap>
           </div>
         </div>
       </div>
@@ -75,7 +74,9 @@ import Footer from "../components/Footer.astro";
           }
         </div>
         <div class="smag_knap">
-          <a href="">Se alle opskrifter</a>
+          <a href="/opskrifter"
+            ><Knap variant="smag">Se alle opskrifter</Knap></a
+          >
         </div>
       </div>
     </section>
@@ -99,9 +100,7 @@ import Footer from "../components/Footer.astro";
               madoplevelser, uanset om du er til dumplings i Tokyo eller tacos i
               Mexico City. Klar til at rejse med smagsløgene forrest?
             </p>
-            <div class="udforsk_knap">
-              <a href="">Udforsk her</a>
-            </div>
+            <Knap variant="oplev">Udforsk her</Knap>
           </div>
 
           <div class="rejs_img">
@@ -136,14 +135,22 @@ import Footer from "../components/Footer.astro";
             </p>
 
             <div class="skab_knapper">
-              <a href="" class="smag_knap"> Gå til opskrifter </a>
-              <a href="" class="smag_knap"> Gå til YouTube </a>
+              <a href="opskrifter/"
+                ><Knap variant="skab">Gå til opskrifter</Knap></a
+              >
+              <a href="https://www.youtube.com/@umutsakarya5878"
+                ><Knap variant="skab">Gå til YouTube</Knap></a
+              >
             </div>
           </div>
 
           <div class="yt_video">
-            <a href=""><img src="/imgs/kylling_stegt.svg" alt="" /></a>
-            <a href=""><img src="/imgs/tso_chicken.svg" alt="" /></a>
+            <a href="https://youtu.be/XA8N2LFJyLU?si=hoT7w9hnFdeV3EkZ"
+              ><img src="/imgs/kylling_stegt.svg" alt="" /></a
+            >
+            <a href="https://youtu.be/WwcaaYzLaCk?si=ZAesGfwew8JesPS6"
+              ><img src="/imgs/tso_chicken.svg" alt="" /></a
+            >
           </div>
         </div>
       </div>
@@ -177,6 +184,7 @@ import Footer from "../components/Footer.astro";
       </div>
     </section>
     <div class="border"></div>
+    <Nyhedsbrev />
   </body>
   <Footer />
 </html>
@@ -254,6 +262,10 @@ import Footer from "../components/Footer.astro";
     }
   }
 
+  .ramme {
+    max-width: 350px;
+  }
+
   .hero_grid {
     margin-top: 50px;
   }
@@ -275,70 +287,26 @@ import Footer from "../components/Footer.astro";
     font-weight: 600;
   }
 
-  .tilmeld_knap {
-    display: inline-block;
-    background-color: var(--skrift);
-    color: var(--baggrund);
-    padding: 12px;
-    margin-top: 35px;
-    margin-bottom: 75px;
-    border-radius: 10px;
-    border: 4px solid var(--skrift);
-    a {
-      color: var(--baggrund);
-    }
-  }
-
-  .tilmeld_knap:hover {
-    border: 4px solid var(--brun);
-  }
-
   .smagcards {
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .smag_knap {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
   }
 
   .smag {
     padding-top: 70px;
-    padding-bottom: 70px;
-  }
-  .smag_knap {
-    margin-top: 40px;
-    display: inline-block;
-    background-color: var(--smag);
-    color: var(--skrift);
-    padding: 12px;
-    border-radius: 10px;
-    border: 4px solid var(--smag);
-    a {
-      color: var(--skrift);
-    }
-  }
-
-  .smag_knap:hover {
-    border: 4px solid var(--brun);
+    padding-bottom: 100px;
   }
 
   .oplev {
     padding-top: 100px;
-    padding-bottom: 70px;
-  }
-
-  .udforsk_knap {
-    display: inline-block;
-    background-color: var(--oplev);
-    color: var(--skrift);
-    padding: 12px;
-    border-radius: 10px;
-    border: 4px solid var(--oplev);
-    a {
-      color: var(--skrift);
-    }
-    margin-bottom: 50px;
-    margin-top: 20px;
-  }
-
-  .udforsk_knap:hover {
-    border: 4px solid var(--brun);
+    padding-bottom: 100px;
   }
 
   .rejs_img {
@@ -364,21 +332,13 @@ import Footer from "../components/Footer.astro";
   }
 
   .skab {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .skab_knapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-    a {
-      font-size: 15px;
-      background-color: var(--skab);
-      color: var(--baggrund);
-      border: 4px solid var(--skab);
-    }
+    display: flex;
+    flex-direction: column;
   }
 
   .some {
@@ -455,7 +415,7 @@ import Footer from "../components/Footer.astro";
         url(/svg_forside/stor_tomat.svg);
       background-position:
         left center,
-        center top,
+        center calc(100% - 625px),
         right calc(100% - 400px);
       background-repeat: no-repeat;
       height: auto;
@@ -465,7 +425,7 @@ import Footer from "../components/Footer.astro";
 
     .some {
       background-image: url(/svg_forside/hvidloeg.svg);
-      background-position:;
+      background-position: 0 10%;
       background-repeat: no-repeat;
       height: auto;
       width: 100%;
@@ -473,7 +433,9 @@ import Footer from "../components/Footer.astro";
     }
 
     /* DESKTOP CSS */
-
+    .ramme {
+      max-width: 1100px;
+    }
     .velkommen {
       margin-top: 80px;
     }
@@ -521,15 +483,6 @@ import Footer from "../components/Footer.astro";
       width: 50ch;
     }
 
-    .skab_knapper {
-      a {
-        font-size: 24px;
-      }
-    }
-    a {
-      font-size: 24px;
-    }
-
     .flex {
       display: flex;
       justify-content: center;
@@ -538,6 +491,12 @@ import Footer from "../components/Footer.astro";
     .smagcards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skab_knapper {
+      display: flex;
+      flex-direction: row;
       gap: 20px;
     }
   }
