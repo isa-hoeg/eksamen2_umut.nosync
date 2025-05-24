@@ -1,43 +1,79 @@
 ---
 const { opskrift } = Astro.props;
 ---
-
 <article class="card_container">
   <div class="card">
-    <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" />
-    <h3>{opskrift.opskrift_titel}</h3>
+    <div class="image_wrapper">
+      <img src={`/imgs/${opskrift.opskrift_img}`} alt="Billede af opskrift" />
+      <div class="gradient_overlay"></div>
+      <div class="text_overlay">
+        <h3>{opskrift.opskrift_titel}</h3>
+        <p>{opskrift.opskrift_kategori}</p>
+      </div>
+    </div>
   </div>
 </article>
 
 <style>
-  /* MOBIL FORMAT */
-
-  img {
-    width: 100%;
-    aspect-ratio: 254/264;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-  }
-
   .card_container {
     background-color: var(--smag);
-    text-align: center;
     border-radius: 10px;
+    overflow: hidden;
     margin-bottom: 25px;
-  }
-  .card_container:hover {
-    transform: scale(1.03); /* Zoomer lidt ud */
     transition: transform 0.3s ease-in-out;
   }
 
-  h3 {
-    font-size: 20px;
-    padding: 10px;
+  .card_container:hover {
+    transform: scale(1.03);
   }
 
-  /* DESKTOP FORMAT */
+  .image_wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 254/264;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .gradient_overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+    border-radius: 0 0 10px 10px;
+  }
+
+  .text_overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  .text_overlay h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .text_overlay p {
+    font-size: 14px;
+    margin: 0;
+  }
+
   @media (min-width: 850px) {
-    img {
+    .image_wrapper {
       aspect-ratio: 254/264;
     }
   }
