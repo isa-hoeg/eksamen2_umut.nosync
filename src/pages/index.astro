@@ -56,7 +56,9 @@ import Knap from "../components/Knap.astro";
               perfekt, eller en kommende rejse - uden en ide om hvor du bør
               spise - så kan du her på siden finde inspiration og vejledning.
             </p>
-            <Knap variant="tilmeld">Tilmeld nyhedsbrev</Knap>
+            <a href="#nyhedsbrev">
+              <Knap variant="tilmeld">Tilmeld nyhedsbrev</Knap>
+            </a>
           </div>
         </div>
       </div>
@@ -184,7 +186,9 @@ import Knap from "../components/Knap.astro";
       </div>
     </section>
     <div class="border"></div>
-    <Nyhedsbrev />
+    <div id="nyhedsbrev">
+      <Nyhedsbrev />
+    </div>
   </body>
   <Footer />
 </html>
@@ -260,6 +264,11 @@ import Knap from "../components/Knap.astro";
       width: 100%;
       margin-bottom: 20px;
     }
+  }
+
+  :root {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   .ramme {
