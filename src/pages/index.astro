@@ -56,9 +56,11 @@ import Knap from "../components/Knap.astro";
               perfekt, eller en kommende rejse - uden en ide om hvor du bør
               spise - så kan du her på siden finde inspiration og vejledning.
             </p>
-            <a href="#nyhedsbrev">
-              <Knap variant="tilmeld">Tilmeld nyhedsbrev</Knap>
-            </a>
+            <div class="tilmeld_knap">
+              <a href="#nyhedsbrev">
+                <Knap variant="tilmeld">Tilmeld nyhedsbrev</Knap>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@ import Knap from "../components/Knap.astro";
           {
             Array.isArray(data) &&
               data
-                .slice(5, 9)
+                .filter((opskrift) => [2, 21, 12, 1].includes(opskrift.id))
                 .map((opskrift) => <SmagCard opskrift={opskrift} />)
           }
         </div>
@@ -266,6 +268,9 @@ import Knap from "../components/Knap.astro";
     }
   }
 
+  .tilmeld_knap {
+    margin-top: 40px;
+  }
   :root {
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -299,7 +304,7 @@ import Knap from "../components/Knap.astro";
   .smagcards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
   }
 
   .smag_knap {
@@ -454,7 +459,7 @@ import Knap from "../components/Knap.astro";
     }
 
     p {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .hero_grid {
@@ -462,6 +467,7 @@ import Knap from "../components/Knap.astro";
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       margin-top: 50px;
+      margin-bottom: 50px;
     }
     .grid_1-1 {
       display: grid;
