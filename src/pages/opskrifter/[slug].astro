@@ -3,7 +3,6 @@
 import "../../styles/style.css";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import SingleOpskrift from "../components/SingleOpskrift.astro";
 import Knap from "../../components/Knap.astro";
 
 const { opskrift } = Astro.props;
@@ -102,7 +101,7 @@ const ingredienser = opskrift.opskrift_ingredienser
               <div class="skaerm_taendt">
                 <div class="skiftContainer" id="skift">
                   <img
-                    src="../imgs/cirkel_t_ikon.svg"
+                    src="/../imgs/cirkel_t_ikon.svg"
                     alt="cirkel"
                     class="cirkel_t_ikon"
                   />
@@ -111,7 +110,7 @@ const ingredienser = opskrift.opskrift_ingredienser
               </div>
 
               <div class="favorit_ikon">
-                <img src="../imgs/heart.svg" alt="heart" />
+                <img src="/../imgs/hjerte.svg" class="like" alt="hjerte" />
                 <p>Føj til mine favoritter</p>
               </div>
             </div>
@@ -455,13 +454,12 @@ const ingredienser = opskrift.opskrift_ingredienser
     cursor: pointer;
     margin: 0px 10px 0px 0px;
   }
-  .favorit_ikon img:hover {
-    filter: brightness(1.1);
-    transform: scale(1.05);
-    cursor: pointer;
-    transition:
-      transform 0.2s ease,
-      filter 0.2s ease;
+  .like {
+    content: url("/imgs/hjerte.svg");
+    transition: content 0.3s;
+  }
+  .like:hover {
+    content: url("/imgs/hjerte_fyldt.svg");
   }
 
   .skiftContainer {
