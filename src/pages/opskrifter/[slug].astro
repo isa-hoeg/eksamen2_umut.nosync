@@ -4,6 +4,7 @@ import "../../styles/style.css";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import SingleOpskrift from "../components/SingleOpskrift.astro";
+import Knap from "../../components/Knap.astro";
 
 const { opskrift } = Astro.props;
 
@@ -74,7 +75,11 @@ const ingredienser = opskrift.opskrift_ingredienser
               <h3>{opskrift.opskrift_varighed}</h3>
             </div>
             <div class="knap_intro">
-              <h3>4 personer</h3>
+              <h3>
+                <button class="person-knap" onclick="ændrAntal(-1)">−</button>
+                <span id="antal-personer">4</span> personer
+                <button class="person-knap" onclick="ændrAntal(1)">+</button>
+              </h3>
             </div>
           </div>
         </div>
@@ -84,9 +89,12 @@ const ingredienser = opskrift.opskrift_ingredienser
         <div class="ramme">
           <h2>Beskrivelse:</h2>
           <p>{opskrift.opskrift_beskrivelse}</p>
-          <div class="knap_video">
+          <a href="#video_section">
+            <Knap variant="tilmeld">Gå til video her!</Knap>
+          </a>
+          <!-- <div class="knap_video">
             <a href="#video_section" class="knap_t_video">Gå til video her!</a>
-          </div>
+          </div> -->
           <div class="border"></div>
         </div>
       </section>
@@ -218,7 +226,8 @@ const ingredienser = opskrift.opskrift_ingredienser
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Joakim</h3>
                 <p class="anmeldelse">
-                  "Smager skønt, og så er opskriften lige til at gå til!"
+                  "Smager skønt, og så er opskriften lige til at gå til! MUMS
+                  MUMS MUMS"
                 </p>
               </div>
               <div class="anmeldelser">
@@ -226,6 +235,19 @@ const ingredienser = opskrift.opskrift_ingredienser
                 <p class="anmeldelse">
                   "Tak for lækker mad Umut! Konen er glad, og det er min mave
                   også"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Monika</h3>
+                <p class="anmeldelse">
+                  "Fantastisk lækker opskrift som altid Umut!"
+                </p>
+              </div>
+              <div class="anmeldelser">
+                <h3 class="navne_anmeldelser">Kasper</h3>
+                <p class="anmeldelse">
+                  "Masser af smag, nem opskrift og bare lækkert!! Tak for den
+                  gode opskrift."
                 </p>
               </div>
             </div>
@@ -270,27 +292,47 @@ const ingredienser = opskrift.opskrift_ingredienser
                 placeholder="Skriv din kommentar her..."
                 required></textarea>
             </form>
-
             <p class="knap_send">Send</p>
           </div>
         </div>
       </section>
     </main>
-  </body>
 
-  <Footer />
-</html>
-<!-- Flyt denne HELT nederst før </html> -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const skiftContainer = document.getElementById("skift");
-    if (skiftContainer) {
-      skiftContainer.addEventListener("click", () => {
-        skiftContainer.classList.toggle("switch-on");
+    <Footer />
+    <!-- Flyt denne HELT nederst før </html> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const skiftContainer = document.getElementById("skift");
+        if (skiftContainer) {
+          skiftContainer.addEventListener("click", () => {
+            skiftContainer.classList.toggle("switch-on");
+          });
+        }
       });
-    }
-  });
-</script>
+    </script>
+    <script>
+      // Fortæl TypeScript om den globale funktion med nedenstående sætning
+      declare global {
+        interface Window {
+          ændrAntal: (ændring: number) => void;
+        }
+      }
+      let antal = 4;
+      // Start med 4 personer, som er standardværdien
+
+      // Funktion til at ændre antallet af personer
+      window.ændrAntal = function (ændring: number) {
+        const nyAntal = antal + ændring;
+        if (nyAntal >= 1) {
+          antal = nyAntal;
+          document.getElementById("antal-personer")!.textContent =
+            antal.toString();
+        }
+      };
+      // ved at sætte "!" efter getElementById, fortæller vi TypeScript, at vi er sikre på, at elementet findes.
+    </script>
+  </body>
+</html>
 
 <style>
   /* -------MOBIL FORMAT------- */
@@ -315,7 +357,7 @@ const ingredienser = opskrift.opskrift_ingredienser
     text-align: center;
   }
   p {
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 5px;
     margin-bottom: 15px;
   }
@@ -347,6 +389,22 @@ const ingredienser = opskrift.opskrift_ingredienser
     padding: 10px 25px;
     width: 200px;
   }
+
+  .person-knap {
+    background-color: var(--skrift);
+    color: var(--baggrund);
+    border: none;
+    font-size: 12px;
+    padding: 2px 6px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .person-knap:hover {
+    background-color: var(--baggrund);
+    color: var(--skrift);
+  }
+
   .beskrivelse_section,
   .fremgang_section,
   .anmeldelser_section {
@@ -374,6 +432,10 @@ const ingredienser = opskrift.opskrift_ingredienser
     border: 1px solid var(--brun);
     width: 100%;
     margin: 2rem auto;
+  }
+  :root {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   .svg_ikoner {
@@ -468,11 +530,12 @@ const ingredienser = opskrift.opskrift_ingredienser
   }
   .knap_send {
     display: inline-block; /* gør den kun så bred som indholdet */
+    font-family: playfair display;
     background-color: var(--skrift);
     color: var(--baggrund);
     border-radius: 10px;
     padding: 10px 20px;
-    margin: 10px 0px;
+    margin: 12px 0px;
     cursor: pointer;
   }
   .knap_send:hover {
@@ -589,6 +652,10 @@ const ingredienser = opskrift.opskrift_ingredienser
     box-sizing: border-box;
   }
 
+  .intro_t_kommentar {
+    text-align: center;
+  }
+
   /* Animationen */
   @keyframes scroll {
     0% {
@@ -677,9 +744,6 @@ const ingredienser = opskrift.opskrift_ingredienser
     }
     .navne_anmeldelser {
       font-size: 20px;
-    }
-    .intro_t_kommentar {
-      text-align: center;
     }
 
     /* ILLUSTRATIONER DESKTOP */
