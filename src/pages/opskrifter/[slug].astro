@@ -39,6 +39,15 @@ trim() fjerner mellemrum i starten og slutningen af teksten.
 const ingredienser = opskrift.opskrift_ingredienser
   .split("\n")
   .filter((ingrediens) => ingrediens.trim() !== "");
+
+// Opdeler fremgangsmåden ved at splitte teksten på enkelt linjeskift (\n)
+// Fjerner unødvendige mellemrum, så hvert afsnit bliver vist som et separat <p>-element
+const afsnit = opskrift.opskrift_fremgang
+  .split("\n")
+  .map((s) => s.trim())
+  .filter((s) => s.length > 0); // fjerner tomme linjer, hvis der er nogen
+
+const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
 ---
 
 <!doctype html>
@@ -52,7 +61,25 @@ const ingredienser = opskrift.opskrift_ingredienser
       href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+    <title>{opskrift.opskrift_titel}</title>
   </head>
 
   <body>
@@ -86,8 +113,14 @@ const ingredienser = opskrift.opskrift_ingredienser
 
       <section class="beskrivelse_section">
         <div class="ramme">
-          <h2>Beskrivelse:</h2>
-          <p>{opskrift.opskrift_beskrivelse}</p>
+          <>
+            <h2>Beskrivelse:</h2>
+            {
+              afsnitBeskrivelse.map((afsnit, index) => (
+                <p key={index}>{afsnit}</p>
+              ))
+            }
+          </>
           <a href="#video_section">
             <Knap variant="tilmeld">Gå til video her!</Knap>
           </a>
@@ -134,7 +167,10 @@ const ingredienser = opskrift.opskrift_ingredienser
             </div>
             <div class="fremgangsmade_boks">
               <h2>Fremgangsmåde:</h2>
-              <p>{opskrift.opskrift_fremgang}</p>
+              <!-- // Viser hver del af fremgangsmåden som et <p>-element.
+              // 'afsnit' er et array, hvor hvert element er et afsnit i teksten, opdelt ved linjeskift.
+              // .map() looper gennem arrayet og viser hvert trin med en unik nøgle (key). -->
+              {afsnit.map((trin, index) => <p key={index}>{trin}</p>)}
             </div>
           </div>
           <div class="border"></div>
@@ -372,6 +408,8 @@ const ingredienser = opskrift.opskrift_ingredienser
     border-radius: 10px;
     display: block; /* vigtigt for at margin: auto virker på img */
     margin: 0 auto; /* centrerer billedet vandret */
+    object-fit: cover;
+    aspect-ratio: 1/1;
   }
   .knapper {
     display: flex;
@@ -671,6 +709,8 @@ const ingredienser = opskrift.opskrift_ingredienser
     }
     .img_opskrift {
       width: 70%;
+      object-fit: cover;
+      aspect-ratio: 3/2;
     }
     .knapper {
       flex-direction: row;
@@ -739,6 +779,7 @@ const ingredienser = opskrift.opskrift_ingredienser
     }
     .navne_anmeldelser {
       font-size: 20px;
+      text-align: center;
     }
 
     /* ILLUSTRATIONER DESKTOP */
