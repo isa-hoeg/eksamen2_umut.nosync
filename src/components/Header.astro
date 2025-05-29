@@ -1,143 +1,231 @@
 <header>
   <nav>
-    <div class="nav-left">
-      <a href="/" class="button-link">Velkommen</a>
-      <a href="/opskrifter" class="button-link">Opskrifter</a>
+    <!-- Burger -->
+    <div class="burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
 
-    <a href="/" class="logo">
-      <img src="/imgs/logo.svg" alt="Logo" />
-    </a>
+    <!-- Desktop menus -->
+    <ul class="menu left-menu desktop-only">
+      <li><a href="/" class="button-link">Velkommen</a></li>
+      <li><a href="/opskrifter" class="button-link">Opskrifter</a></li>
+    </ul>
 
-    <div class="nav-right">
-      <a href="/kalender" class="button-link">Rejseguides & Livsstil</a>
-      <a href="/kalender" class="button-link search-link">
-        Søg
-        <svg
-          class="search-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="#efe4dc"
-          width="18"
-          height="18"
-        >
-          <path
-            d="M10 2a8 8 0 015.29 13.71l4 4a1 1 0 01-1.42 1.42l-4-4A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"
-          ></path>
-        </svg>
+    <div class="logo">
+      <a href="/">
+        <img src="/imgs/logo.svg" alt="logo" />
       </a>
     </div>
 
-    <div class="burger" onclick="toggleMenu(this)">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
+    <ul class="menu right-menu desktop-only">
+      <li>
+        <a href="" class="button-link">Rejseguides & Livsstil</a>
+      </li>
+      <li>
+        <a href="/" class="search">Søg <img src="/imgs/search.svg" alt="" /></a>
+      </li>
+    </ul>
+
+    <!-- Mobil menu samlet -->
+    <div class="mobile-menu">
+      <ul class="menu">
+        <li><a href="/" class="button-link">Velkommen</a></li>
+        <li><a href="/opskrifter" class="button-link">Opskrifter</a></li>
+        <li>
+          <a href="" class="button-link">Rejseguides & Livsstil</a>
+        </li>
+        <li>
+          <a href="/" class="search"
+            >Søg <img src="/imgs/search.svg" alt="" /></a
+          >
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
 
-<script src="/src/scripts/menu.js"></script>
+<script src="../scripts/menu.js"></script>
 
 <style>
-  header {
-    background-color: var(--skrift, #233249);
-    padding: 20px;
-    position: relative;
+  /* Menu */
+  a {
+    text-decoration: none;
+    color: var(--baggrund);
+    font-family:
+      Playfair Display,
+      serif;
+    font-size: 22px;
   }
 
-  nav {
+  .search {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 16px;
+    gap: 5px;
   }
 
-  .nav-left,
-  .nav-right {
-    display: none;
+  .search:hover {
+    color: var(--brun);
   }
-
-  .logo img {
-    height: 50px;
-  }
-
-  /* .logo {
-    order: -2;
-  } */
 
   .button-link {
-    text-decoration: none;
-    font-family: "Playfair Display";
-    font-size: 20px;
+    text-decoration: none; /* Removes the underline */
+    font-family:
+      Playfair Display,
+      serif;
+    font-size: 22px;
     color: var(--baggrund);
-    padding: 10px;
+    padding: 20px;
   }
+
   .button-link:hover {
     color: var(--brun);
   }
 
-  /* === BURGER MENU === */
+  header {
+    position: relative;
+    background-color: #022601;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    width: 100%;
+  }
+  nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 20px;
+    gap: 80px;
+
+    /* flex-wrap: wrap; */
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .left-menu,
+  .right-menu {
+    flex: 1;
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .logo {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo img {
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none; /* kun mobil */
+  }
+
   .burger {
-    display: block;
-    width: 30px;
-    height: 20px;
+    display: none;
+  }
+
+  /* BURGER */
+  .burger {
+    display: none;
     cursor: pointer;
+    margin-left: auto;
   }
 
   .burger .line {
-    width: 100%;
+    width: 30px;
     height: 2px;
-    background-color: var(--baggrund,);
-    margin-bottom: 5px;
-    transition: 0.2s linear;
+    background: var(--baggrund);
+    margin: 5px 0;
   }
 
-  /* === MOBILMENU (vises når .active) === */
-  nav.active .nav-left,
-  nav.active .nav-right {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  nav.active .button-link {
-    padding: 15px 20px;
-    font-size: 18px;
-  }
-  .search-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .search-icon {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-  }
-
-  /* === DESKTOP: 850px og op === */
-  @media (min-width: 1200px) {
-    .burger {
-      display: none;
-    }
-
-    .nav-left,
-    .nav-right {
+  /* MOBILE STYLES */
+  @media screen and (max-width: 800px) {
+    .search {
       display: flex;
       flex-direction: row;
-      gap: 90px;
-      margin-left: 40px;
-      margin-right: 40px;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav {
+      gap: 30px;
+    }
+
+    .burger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      transition: 0.2s linear;
+    }
+
+    .burger.active .line:nth-child(2) {
+      opacity: 0;
+      transition: 0.15s linear;
+      /* Stregen bliver usynlig, når der bliver trykket, da den danner et kryds, kun med line 1 og 2 */
+    }
+
+    .burger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      transition: 0.2s linear;
+    }
+
+    /* .search img {
+    width: 10%;
+  } */
+
+    .desktop-only {
+      display: none; /* skjul desktop menuer */
+    }
+
+    .burger {
+      display: block;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 94px;
+      left: -6%;
+      width: 110%;
+      background: #022601;
+      z-index: 10;
+      gap: 20px;
+    }
+
+    .mobile-menu .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* <--- Dette giver luft mellem knapperne */
+      padding: 20px 0;
+    }
+
+    nav.active .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
     }
 
     .logo img {
-      height: 80px;
-      position: absolute;
-      left: 39%;
-      top: 12%;
+      width: 80%;
+    }
+
+    .logo {
+      order: -1;
+
+      justify-content: center;
     }
   }
 </style>

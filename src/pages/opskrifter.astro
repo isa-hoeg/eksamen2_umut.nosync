@@ -38,25 +38,7 @@ import Filter from "../components/Filter.astro";
       href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon_io/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon_io/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon_io/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/favicon_io/site.webmanifest" />
-    <title>Opskrifter</title>
+
   </head>
   <body>
     <Header />
@@ -76,7 +58,9 @@ import Filter from "../components/Filter.astro";
         <Soege />
         <div class="ramme">
           <h2>Filtrér din mad</h2>
-          <Filter />
+          <div class="filter_container">
+            <Filter />
+          </div>
         </div>
         <!-- </section> -->
       </div>
@@ -139,7 +123,7 @@ import Filter from "../components/Filter.astro";
     h2 {
       text-align: center;
       font-size: 19px;
-      margin-bottom: 40px;
+      margin-bottom: 80%;
     }
     h3 {
       text-align: center;
@@ -160,6 +144,11 @@ import Filter from "../components/Filter.astro";
     }
     /* DESKTOP FORMAT */
     @media (min-width: 850px) {
+      h2 {
+        text-align: center;
+        font-size: 19px;
+        margin-bottom: 100px;
+      }
       p {
         margin-left: 90px;
         margin-right: 90px;
