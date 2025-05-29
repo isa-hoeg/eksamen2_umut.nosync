@@ -1,8 +1,10 @@
 ---
 //@ts-nocheck
 
-const url = "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
+const url =
+  "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
 
 const options = {
   headers: {
@@ -32,7 +34,10 @@ import Filter from "../components/Filter.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -41,12 +46,21 @@ import Filter from "../components/Filter.astro";
       <div class="ramme">
         <h1>OPSKRIFTER</h1>
         <h3>Mad med sjæl, smag og sanselighed</h3>
-        <p>Hos Umut handler mad ikke bare om opskrifter – det handler om minder, nysgerrighed og kærlighed til råvarer. Her på siden kan du gå på opdagelse i hans univers: Fra klassiske livretter til nye fortolkninger, altid med smagen i centrum. Brug siden til at finde inspiration, skabe dine egne variationer og gemme dine favoritter. Det er mad med personlighed – lige til at gå til.</p>
+        <p>
+          Hos Umut handler mad ikke bare om opskrifter – det handler om minder,
+          nysgerrighed og kærlighed til råvarer. Her på siden kan du gå på
+          opdagelse i hans univers: Fra klassiske livretter til nye
+          fortolkninger, altid med smagen i centrum. Brug siden til at finde
+          inspiration, skabe dine egne variationer og gemme dine favoritter. Det
+          er mad med personlighed – lige til at gå til.
+        </p>
         <!-- <section class="filter"> -->
         <Soege />
         <div class="ramme">
           <h2>Filtrér din mad</h2>
-          <Filter />
+          <div class="filter_container">
+            <Filter />
+          </div>
         </div>
         <!-- </section> -->
       </div>
@@ -76,7 +90,9 @@ import Filter from "../components/Filter.astro";
     }
 
     .hero {
-      background-image: url("/opskriftside_svg/mad_tallerken.svg"), url("/opskriftside_svg/oliven_2.svg");
+      background-image:
+        url("/opskriftside_svg/mad_tallerken.svg"),
+        url("/opskriftside_svg/oliven_2.svg");
       height: auto;
       width: 100%;
       background-repeat: no-repeat, no-repeat;
@@ -87,7 +103,10 @@ import Filter from "../components/Filter.astro";
     }
     .opskrifter {
       min-height: 1800px;
-      background-image: url("/opskriftside_svg/groenne_aerter.svg"), url("/opskriftside_svg/roede_blade2.svg"), url("/opskriftside_svg/hvidloeg.svg");
+      background-image:
+        url("/opskriftside_svg/groenne_aerter.svg"),
+        url("/opskriftside_svg/roede_blade2.svg"),
+        url("/opskriftside_svg/hvidloeg.svg");
       background-repeat: no-repeat, no-repeat, no-repeat;
       background-size: 180px, 300px, 130px;
       background-position:
@@ -104,7 +123,7 @@ import Filter from "../components/Filter.astro";
     h2 {
       text-align: center;
       font-size: 19px;
-      margin-bottom: 40px;
+      margin-bottom: 80%;
     }
     h3 {
       text-align: center;
@@ -125,6 +144,11 @@ import Filter from "../components/Filter.astro";
     }
     /* DESKTOP FORMAT */
     @media (min-width: 850px) {
+      h2 {
+        text-align: center;
+        font-size: 19px;
+        margin-bottom: 100px;
+      }
       p {
         margin-left: 90px;
         margin-right: 90px;
@@ -133,7 +157,9 @@ import Filter from "../components/Filter.astro";
       .hero {
         height: auto;
         width: 100%;
-        background-image: url("/opskriftside_svg/mad_2.svg"), url("/opskriftside_svg/oliven_2.svg");
+        background-image:
+          url("/opskriftside_svg/mad_2.svg"),
+          url("/opskriftside_svg/oliven_2.svg");
         background-repeat: no-repeat, no-repeat;
         background-size: 320px, 220px;
         background-position:
@@ -142,7 +168,10 @@ import Filter from "../components/Filter.astro";
       }
       .opskrifter {
         min-height: 3000px;
-        background-image: url("/opskriftside_svg/groenne_aerter.svg"), url("/opskriftside_svg/roede_blade2.svg"), url("/opskriftside_svg/hvidloeg.svg");
+        background-image:
+          url("/opskriftside_svg/groenne_aerter.svg"),
+          url("/opskriftside_svg/roede_blade2.svg"),
+          url("/opskriftside_svg/hvidloeg.svg");
         background-repeat: no-repeat, no-repeat, no-repeat;
         background-size: 350px, 600px, 300px;
         background-position:

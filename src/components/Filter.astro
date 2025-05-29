@@ -3,7 +3,7 @@ import "../styles/style.css";
 ---
 
 <div class="filter-container">
-  <details>
+  <details class="maaltidstype">
     <summary>Måltidstype</summary>
     <p><input type="checkbox" />Morgenmad</p>
     <p><input type="checkbox" />Frokost</p>
@@ -12,14 +12,15 @@ import "../styles/style.css";
     <p><input type="checkbox" />Forret/Appetizers</p>
   </details>
 
-  <details>
+  <details class="ingrediens">
     <summary>Ingrediens</summary>
     <p><input type="checkbox" />Aftensmad</p>
     <p><input type="checkbox" />Morgenmad</p>
     <p><input type="checkbox" />Frokost</p>
     <p><input type="checkbox" />Forretter/Apetizers</p>
   </details>
-  <details>
+
+  <details class="varighed">
     <summary>Varighed</summary>
     <p><input type="checkbox" />Aftensmad</p>
     <p><input type="checkbox" />Morgenmad</p>
@@ -27,7 +28,7 @@ import "../styles/style.css";
     <p><input type="checkbox" />Forretter/Apetizers</p>
   </details>
 
-  <details>
+  <details class="verdenskokken">
     <summary>Verdenskøkken</summary>
     <p><input type="checkbox" />Italiensk</p>
     <p><input type="checkbox" />Asiatisk</p>
@@ -50,15 +51,43 @@ import "../styles/style.css";
     margin-right: 20px;
     margin-bottom: 20px;
     justify-content: center;
+    position: absolute;
+    z-index: 2;
+    width: 210px;
+    cursor: pointer;
   }
-  
 
   summary {
     color: var(--skrift);
     font-size: 14px;
+    padding: 3px;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
   }
   p {
     font-size: 14px;
+    margin: 5px;
+  }
+
+  .maaltidstype {
+    top: 100%;
+    left: 27%;
+    z-index: 4;
+  }
+  .ingrediens {
+    top: 107%;
+    left: 27%;
+    z-index: 3;
+  }
+  .varighed {
+    top: 114%;
+    left: 27%;
+    z-index: 2;
+  }
+  .verdenskokken {
+    top: 121%;
+    left: 27%;
+    z-index: 1;
   }
 
   @media (min-width: 850px) {
@@ -70,7 +99,24 @@ import "../styles/style.css";
     summary,
     p {
       color: var(--skrift);
-      font-size: 16px;
+      font-size: 15px;
+    }
+
+    .maaltidstype {
+      top: 90%;
+      left: 16%;
+    }
+    .ingrediens {
+      top: 90%;
+      left: 34%;
+    }
+    .varighed {
+      top: 90%;
+      left: 52%;
+    }
+    .verdenskokken {
+      top: 90%;
+      left: 70%;
     }
   }
 </style>
