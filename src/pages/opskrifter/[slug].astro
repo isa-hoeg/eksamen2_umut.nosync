@@ -68,13 +68,13 @@ const ingredienser = opskrift.opskrift_ingredienser
           />
           <div class="knapper">
             <div class="knap_intro">
-              <h3>{opskrift.opskrift_type}</h3>
+              <h3 class="fakta">{opskrift.opskrift_type}</h3>
             </div>
             <div class="knap_intro">
-              <h3>{opskrift.opskrift_varighed}</h3>
+              <h3 class="fakta">{opskrift.opskrift_varighed}</h3>
             </div>
             <div class="knap_intro">
-              <h3>
+              <h3 class="fakta">
                 <button class="person-knap" onclick="ændrAntal(-1)">−</button>
                 <span id="antal-personer">4</span> personer
                 <button class="person-knap" onclick="ændrAntal(1)">+</button>
@@ -348,7 +348,7 @@ const ingredienser = opskrift.opskrift_ingredienser
     font-size: 30px;
     text-align: center;
   }
-  h3 {
+  .fakta {
     font-size: 14px;
     text-align: center;
   }
@@ -682,7 +682,7 @@ const ingredienser = opskrift.opskrift_ingredienser
       margin: 3rem auto;
     }
     h2 {
-      font-size: 25px;
+      font-size: 30px;
     }
     p {
       font-size: 18px;
