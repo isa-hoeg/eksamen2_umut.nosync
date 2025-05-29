@@ -1,94 +1,119 @@
 
-<body>
-  <section class="nyhedsbrev">
-    <link rel="stylesheet" href="/css/generel.css" />
-    <div class="ramme">
-      <div class="desktop">
-        <h2>Få det bedste fra Umut – direkte til din inbox!</h2>
-        <img src="/imgs/umut2.webp" alt="stregtegning af Umut" />
-      </div>
-      <div class="input-desktop">
-        <input type="text" placeholder="Dit navn..." />
-        <input type="email" placeholder="Email... Larslarsen@gmail.com" />
-      </div>
-      <button>Tilmeld mig!</button>
+<section class="nyhedsbrev-section">
+  <div class="ramme">
+    <div class="sektion-1">
+      <h3>
+        Få det bedste fra Umut<br />
+        -direkte til din inbox!
+      </h3>
+      <img src="/imgs/umut2.webp" alt="Illustration af Umut" class="illustration" />
     </div>
-  </section>
+    <form class="form">
+        <div>
+          <input type="email" placeholder="Email.... Larslarsen@gmail.com" required />
+          <input type="text" placeholder="Dit navn..." required />
+        </div>
+    </form>
+    <button type="submit">Tilmeld mig!</button>
+  </div>
+</section>
 
-  <style>
-    .ramme {
-      text-align: center;
-      width: 50%;
-      margin: 0 auto;
+<style>
+  .ramme {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .sektion-1 {
+    text-align: center;
+    font-family: playfair display;
+    color: var(--skrift, #233249);
+  }
+
+  .illustration {
+    max-width: 150px;
+    margin: 0 auto;
+    height: auto;
+  }
+  h3 {
+    font-size: 22px;
+    color: var(--skrift, #233249);
+    margin-bottom: 16px;
+    margin-top: 50px;
+    font-family: playfair display;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  input {
+    padding: 6px 10px;
+    border: 2px solid var(--brun);
+    border-radius: 999px;
+    background-color: var(--brun, #d8c4b3);
+    font-size: 13px;
+    width: 300px;
+    margin: 5px;
+    border-radius: 8px;
+    font-family: playfair display;
+  }
+
+  button {
+    background-color: var(--skrift, #233249);
+    color: white;
+    font-family: playfair display;
+    border: 4px solid var(--skrift);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 70px;
+    margin-top: 20px;
+   
+  }
+
+  .ramme button:hover {
+    border: 4px solid var(--brun);
+  }
+  @media (min-width: 850px) {
+    h3 {
+      font-size: 30px;
+      color: var(--skrift, #233249);
+      font-family: playfair display;
+      margin-top: 100px;
+     
+    }
+    .sektion-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 32px;
+      text-align: left;
+      margin-left: 150px;
     }
 
-    h2 {
-      font-family: "Playfair Display", serif;
-      color: var(--skrift);
-      margin: 20px 0;
-      font-weight: lighter;
-      font-size: 22px;
-    }
-
-    .ramme img {
-      width: 50%;
-      height: auto;
-      margin-bottom: 10px;
-    }
-
-    .ramme input {
-      width: 100%;
-      padding: 6px 10px;
-      font-size: 13px;
-      font-family: "Playfair Display", serif;
-      color: var(--skrift);
-      border: 2px solid var(--brun);
-      border-radius: 8px;
-      background-color: var(--brun);
-      margin-bottom: 10px;
-    }
-
-    .ramme button {
+    .illustration {
       display: block;
-      margin: 10px auto 20px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-family: "Playfair Display", serif;
-      color: var(--baggrund);
-      background-color: var(--skrift);
-      border: 4px solid var(--skrift);
+      max-width: 250px;
+      margin-right: 200px;
+      margin-top: 50px;
+    }
+    .form {
+      display: flex;
+      grid-template-columns: row;
+    }
+    input {
+      width: 350px;
+      max-width: 450px;
+      margin: 20px;
+      padding: 8px 12px;
       border-radius: 8px;
-      cursor: pointer;
+    
     }
-
-    .ramme button:hover {
-      border: 4px solid var(--brun);
-    }
-
-    /* DESKTOP FORMAT */
-    @media (min-width: 850px) {
-      .input-desktop,
-      .desktop {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      h2 {
-        font-size: 30px;
-        margin-right: 70px;
-        margin-top: 90px;
-      }
-
-      .ramme img {
-        width: 40%;
-        margin-right: 80px;
-      }
-
-      .ramme button {
-        padding: 10px 30px;
-        font-size: 15px;
-      }
-    }
-  </style>
-</body>
+  }
+</style>
