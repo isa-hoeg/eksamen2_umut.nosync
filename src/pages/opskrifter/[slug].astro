@@ -8,9 +8,11 @@ import Knap from "../../components/Knap.astro";
 const { opskrift } = Astro.props;
 
 export async function getStaticPaths() {
-  const url = "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
+  const url =
+    "https://hwgzlgazuaajliatunzr.supabase.co/rest/v1/opskrifter?select=*";
 
-  const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
+  const key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3Z3psZ2F6dWFhamxpYXR1bnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3ODc1OTEsImV4cCI6MjA2MjM2MzU5MX0.i1LfAfWnKTMG6FzdOw_OZsv5GtyewT5WMFZRMvnrGko";
 
   const options = {
     headers: {
@@ -34,7 +36,18 @@ export async function getStaticPaths() {
 trim() fjerner mellemrum i starten og slutningen af teksten.
 !== '' betyder “hvis linjen ikke er tom”.
 */
-const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingrediens) => ingrediens.trim() !== "");
+const ingredienser = opskrift.opskrift_ingredienser
+  .split("\n")
+  .filter((ingrediens) => ingrediens.trim() !== "");
+
+// Opdeler fremgangsmåden ved at splitte teksten på enkelt linjeskift (\n)
+// Fjerner unødvendige mellemrum, så hvert afsnit bliver vist som et separat <p>-element
+const afsnit = opskrift.opskrift_fremgang
+  .split("\n")
+  .map((s) => s.trim())
+  .filter((s) => s.length > 0); // fjerner tomme linjer, hvis der er nogen
+
+const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
 ---
 
 <!doctype html>
@@ -44,7 +57,28 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
     <title>{opskrift.opskrift_titel}</title>
   </head>
 
@@ -54,7 +88,11 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
       <section class="intro_section">
         <div class="ramme">
           <h1>{opskrift.opskrift_titel}</h1>
-          <img src={`/imgs/${opskrift.opskrift_img}`} alt="img_opskrift" class="img_opskrift" />
+          <img
+            src={`/imgs/${opskrift.opskrift_img}`}
+            alt="img_opskrift"
+            class="img_opskrift"
+          />
           <div class="knapper">
             <div class="knap_intro">
               <h3 class="fakta">{opskrift.opskrift_type}</h3>
@@ -75,8 +113,14 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
 
       <section class="beskrivelse_section">
         <div class="ramme">
-          <h2>Beskrivelse:</h2>
-          <p>{opskrift.opskrift_beskrivelse}</p>
+          <>
+            <h2>Beskrivelse:</h2>
+            {
+              afsnitBeskrivelse.map((afsnit, index) => (
+                <p key={index}>{afsnit}</p>
+              ))
+            }
+          </>
           <a href="#video_section">
             <Knap variant="tilmeld">Gå til video her!</Knap>
           </a>
@@ -89,7 +133,11 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
             <div class="svg_ikoner">
               <div class="skaerm_taendt">
                 <div class="skiftContainer" id="skift">
-                  <img src="/../imgs/cirkel_t_ikon.svg" alt="cirkel" class="cirkel_t_ikon" />
+                  <img
+                    src="/../imgs/cirkel_t_ikon.svg"
+                    alt="cirkel"
+                    class="cirkel_t_ikon"
+                  />
                 </div>
                 <p>Hold skærmen tændt</p>
               </div>
@@ -110,12 +158,19 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
                  'index' er positionen i array’et (0, 1, 2...) og bruges som 'key'.
                 */
                 }
-                {ingredienser.map((ingrediens, index) => <li key={index}>{ingrediens}</li>)}
+                {
+                  ingredienser.map((ingrediens, index) => (
+                    <li key={index}>{ingrediens}</li>
+                  ))
+                }
               </ul>
             </div>
             <div class="fremgangsmade_boks">
               <h2>Fremgangsmåde:</h2>
-              <p>{opskrift.opskrift_fremgang}</p>
+              <!-- // Viser hver del af fremgangsmåden som et <p>-element.
+              // 'afsnit' er et array, hvor hvert element er et afsnit i teksten, opdelt ved linjeskift.
+              // .map() looper gennem arrayet og viser hvert trin med en unik nøgle (key). -->
+              {afsnit.map((trin, index) => <p key={index}>{trin}</p>)}
             </div>
           </div>
           <div class="border"></div>
@@ -126,7 +181,16 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
         <div class="ramme">
           <h2 class="større_h2">Kom i køkkenet med Umut!</h2>
           <div class="video_wrapper">
-            <iframe width="100%" height="auto" src={opskrift.opskrift_video} title="YouTube video af opskrift" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+            <iframe
+              width="100%"
+              height="auto"
+              src={opskrift.opskrift_video}
+              title="YouTube video af opskrift"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
           </div>
           <div class="border"></div>
         </div>
@@ -139,51 +203,84 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
             <div class="alle_anmeldelser">
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Anette</h3>
-                <p class="anmeldelse">"Jeg har aldrig været så glad for at lave mad, som jeg er nu. Tak Umut!"</p>
+                <p class="anmeldelse">
+                  "Jeg har aldrig været så glad for at lave mad, som jeg er nu.
+                  Tak Umut!"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Mogens</h3>
-                <p class="anmeldelse">"Super opskrift! Det smagte fantastisk og var super nemt at lave!"</p>
+                <p class="anmeldelse">
+                  "Super opskrift! Det smagte fantastisk og var super nemt at
+                  lave!"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Henriette</h3>
-                <p class="anmeldelse">"Mine børn elsker det! De vil gerne have det hver dag. Tak Umut!"</p>
+                <p class="anmeldelse">
+                  "Mine børn elsker det! De vil gerne have det hver dag. Tak
+                  Umut!"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Sarah</h3>
-                <p class="anmeldelse">"Du har gjort det igen Umut! Fantastisk opskrift. De smager himmelsk"</p>
+                <p class="anmeldelse">
+                  "Du har gjort det igen Umut! Fantastisk opskrift. De smager
+                  himmelsk"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Kenneth</h3>
-                <p class="anmeldelse">"5/5 stjerner. Mega lækker opskrift og ideel til at have med på farten"</p>
+                <p class="anmeldelse">
+                  "5/5 stjerner. Mega lækker opskrift og ideel til at have med
+                  på farten"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Camilla</h3>
-                <p class="anmeldelse">"Jeg elsker dine opskrifter. Nem ret og smager skønt"</p>
+                <p class="anmeldelse">
+                  "Jeg elsker dine opskrifter. Nem ret og smager skønt"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Lukas</h3>
-                <p class="anmeldelse">"Tak for opskriften. Vi er vilde med den herhjemme:)"</p>
+                <p class="anmeldelse">
+                  "Tak for opskriften. Vi er vilde med den herhjemme:)"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Anna-Sofie</h3>
-                <p class="anmeldelse">"Har prøvet flere forskellige opskrifter til denne ret, men dette er da en sikker vinder"</p>
+                <p class="anmeldelse">
+                  "Har prøvet flere forskellige opskrifter til denne ret, men
+                  dette er da en sikker vinder"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Joakim</h3>
-                <p class="anmeldelse">"Smager skønt, og så er opskriften lige til at gå til! MUMS MUMS MUMS"</p>
+                <p class="anmeldelse">
+                  "Smager skønt, og så er opskriften lige til at gå til! MUMS
+                  MUMS MUMS"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Carsten</h3>
-                <p class="anmeldelse">"Tak for lækker mad Umut! Konen er glad, og det er min mave også"</p>
+                <p class="anmeldelse">
+                  "Tak for lækker mad Umut! Konen er glad, og det er min mave
+                  også"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Monika</h3>
-                <p class="anmeldelse">"Fantastisk lækker opskrift som altid Umut!"</p>
+                <p class="anmeldelse">
+                  "Fantastisk lækker opskrift som altid Umut!"
+                </p>
               </div>
               <div class="anmeldelser">
                 <h3 class="navne_anmeldelser">Kasper</h3>
-                <p class="anmeldelse">"Masser af smag, nem opskrift og bare lækkert!! Tak for den gode opskrift."</p>
+                <p class="anmeldelse">
+                  "Masser af smag, nem opskrift og bare lækkert!! Tak for den
+                  gode opskrift."
+                </p>
               </div>
             </div>
           </div>
@@ -196,15 +293,36 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
         <div class="ramme">
           <div class="kommentar_felt">
             <h2 class="større_h2">Hvad synes du om opskrifterne?</h2>
-            <p class="intro_t_kommentar">Skriv her, hvad du synes om opskriften, eller om du gjorde noget andet, som også fungerede over forventning, så jeg og andre kan få tips og tricks.</p>
+            <p class="intro_t_kommentar">
+              Skriv her, hvad du synes om opskriften, eller om du gjorde noget
+              andet, som også fungerede over forventning, så jeg og andre kan få
+              tips og tricks.
+            </p>
             <form class="kommentar_form">
               <div class="mindste_kasser">
-                <input type="text" id="navn" name="navn" placeholder="Dit navn" required />
+                <input
+                  type="text"
+                  id="navn"
+                  name="navn"
+                  placeholder="Dit navn"
+                  required
+                />
 
-                <input type="email" id="email" name="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
               </div>
 
-              <textarea id="kommentar" name="kommentar" rows="5" placeholder="Skriv din kommentar her..." required></textarea>
+              <textarea
+                id="kommentar"
+                name="kommentar"
+                rows="5"
+                placeholder="Skriv din kommentar her..."
+                required></textarea>
             </form>
             <p class="knap_send">Send</p>
           </div>
@@ -239,7 +357,8 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
         const nyAntal = antal + ændring;
         if (nyAntal >= 1) {
           antal = nyAntal;
-          document.getElementById("antal-personer")!.textContent = antal.toString();
+          document.getElementById("antal-personer")!.textContent =
+            antal.toString();
         }
       };
       // ved at sætte "!" efter getElementById, fortæller vi TypeScript, at vi er sikre på, at elementet findes.
@@ -289,6 +408,8 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
     border-radius: 10px;
     display: block; /* vigtigt for at margin: auto virker på img */
     margin: 0 auto; /* centrerer billedet vandret */
+    object-fit: cover;
+    aspect-ratio: 1/1;
   }
   .knapper {
     display: flex;
@@ -493,7 +614,8 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
 
   /* ILLUSTRATIONER MOBIL */
   .intro_section {
-    background-image: url(/singleview_svg/tomat.svg), url(/svg_forside/aert_foraarsloeg.svg);
+    background-image:
+      url(/singleview_svg/tomat.svg), url(/svg_forside/aert_foraarsloeg.svg);
     background-position:
       left -0% bottom 10%,
       right -50% bottom 2%;
@@ -503,7 +625,9 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
     background-size: 110px, 240px; /* eller fx 50%, contain, eller cover */
   }
   .fremgang_section {
-    background-image: url(/singleview_svg/stor_gul_citron.svg), url(/singleview_svg/gul_citron.svg);
+    background-image:
+      url(/singleview_svg/stor_gul_citron.svg),
+      url(/singleview_svg/gul_citron.svg);
 
     background-position:
       left -2% bottom -5%,
@@ -530,7 +654,9 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
     background-size: 80px;
   }
   .kommentar_section {
-    background-image: url(/singleview_svg/tomat_2.svg), url(/singleview_svg/artiskok.svg), url(/svg_forside/aert_foraarsloeg.svg);
+    background-image:
+      url(/singleview_svg/tomat_2.svg), url(/singleview_svg/artiskok.svg),
+      url(/svg_forside/aert_foraarsloeg.svg);
     background-position:
       right -2% bottom 100%,
       left -2% bottom 40%,
@@ -583,6 +709,8 @@ const ingredienser = opskrift.opskrift_ingredienser.split("\n").filter((ingredie
     }
     .img_opskrift {
       width: 70%;
+      object-fit: cover;
+      aspect-ratio: 3/2;
     }
     .knapper {
       flex-direction: row;
