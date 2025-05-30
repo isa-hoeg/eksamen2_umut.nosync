@@ -37,8 +37,10 @@ trim() fjerner mellemrum i starten og slutningen af teksten.
 !== '' betyder “hvis linjen ikke er tom”.
 */
 const ingredienser = opskrift.opskrift_ingredienser
-  .split("\n")
-  .filter((ingrediens) => ingrediens.trim() !== "");
+  ? opskrift.opskrift_ingredienser
+      .split("\n")
+      .filter((ing) => ing.trim() !== "")
+  : [];
 
 // Opdeler fremgangsmåden ved at splitte teksten på enkelt linjeskift (\n)
 // Fjerner unødvendige mellemrum, så hvert afsnit bliver vist som et separat <p>-element
@@ -49,7 +51,9 @@ const afsnit = opskrift?.opskrift_fremgang
 // Ternary ? : sikrer, at vi kun prøver .split() hvis feltet findes og ikke er null.
 // Hvis feltet er null, returnerer vi i stedet et tomt array, så appen ikke crasher.
 
-const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
+const afsnitBeskrivelse = opskrift.opskrift_beskrivelse
+  ? opskrift.opskrift_beskrivelse.split("\n")
+  : [];
 ---
 
 <!doctype html>
@@ -95,6 +99,7 @@ const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
             alt="img_opskrift"
             class="img_opskrift"
           />
+
           <div class="knapper">
             <div class="knap_intro">
               <h3 class="fakta">{opskrift.opskrift_type}</h3>
@@ -115,14 +120,13 @@ const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
 
       <section class="beskrivelse_section">
         <div class="ramme">
-          <>
-            <h2>Beskrivelse:</h2>
-            {
-              afsnitBeskrivelse.map((afsnit, index) => (
-                <p key={index}>{afsnit}</p>
-              ))
-            }
-          </>
+          <h2>Beskrivelse:</h2>
+          {
+            afsnitBeskrivelse.map((afsnit, index) => (
+              <p key={index}>{afsnit}</p>
+            ))
+          }
+
           <a href="#video_section">
             <Knap variant="tilmeld">Gå til video her!</Knap>
           </a>
@@ -177,9 +181,13 @@ const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
                   // … er en fallback-tekst, der vises hvis der ikke er nogen fremgangsmåde i databasen.
                 )
               }
-              <!-- // Viser hver del af fremgangsmåden som et <p>-element.
-              // 'afsnit' er et array, hvor hvert element er et afsnit i teksten, opdelt ved linjeskift.
-              // .map() looper gennem arrayet og viser hvert trin med en unik nøgle (key). -->
+              {
+                /* 
+                Viser hver del af fremgangsmåden som et <p>-element.
+                'afsnit' er et array, hvor hvert element er et afsnit i teksten, opdelt ved linjeskift.
+               .map() looper gennem arrayet og viser hvert trin med en unik nøgle (key).
+*/
+              }
             </div>
           </div>
           <div class="border"></div>
