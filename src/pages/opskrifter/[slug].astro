@@ -43,7 +43,7 @@ const ingredienser = opskrift.opskrift_ingredienser
 // Opdeler fremgangsmåden ved at splitte teksten på enkelt linjeskift (\n)
 // Fjerner unødvendige mellemrum, så hvert afsnit bliver vist som et separat <p>-element
 const afsnit = opskrift?.opskrift_fremgang
-  ? opskrift.opskrift_fremgang.split(/\n+/).map((s) => s.trim())
+  ? opskrift.opskrift_fremgang.split("\n")
   : [];
 // // ?. sikrer, at vi ikke prøver at tilgå .opskrift_fremgang hvis opskrift ikke findes.
 // Ternary ? : sikrer, at vi kun prøver .split() hvis feltet findes og ikke er null.
