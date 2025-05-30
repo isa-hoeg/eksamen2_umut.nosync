@@ -12,22 +12,6 @@ import "../styles/style.css";
     <p><input type="checkbox" />Forret/Appetizers</p>
   </details>
 
-  <details class="ingrediens">
-    <summary>Ingrediens</summary>
-    <p><input type="checkbox" />Aftensmad</p>
-    <p><input type="checkbox" />Morgenmad</p>
-    <p><input type="checkbox" />Frokost</p>
-    <p><input type="checkbox" />Forretter/Apetizers</p>
-  </details>
-
-  <details class="varighed">
-    <summary>Varighed</summary>
-    <p><input type="checkbox" />Aftensmad</p>
-    <p><input type="checkbox" />Morgenmad</p>
-    <p><input type="checkbox" />Frokost</p>
-    <p><input type="checkbox" />Forretter/Apetizers</p>
-  </details>
-
   <details class="verdenskokken">
     <summary>Verdenskøkken</summary>
     <p><input type="checkbox" />Italiensk</p>
@@ -39,6 +23,22 @@ import "../styles/style.css";
     <p><input type="checkbox" />Indonesisk</p>
     <p><input type="checkbox" />Dansk</p>
   </details>
+
+  <details class="ingrediens">
+    <summary>Ingrediens</summary>
+    <!-- <p><input type="checkbox" />Aftensmad</p>
+    <p><input type="checkbox" />Morgenmad</p>
+    <p><input type="checkbox" />Frokost</p>
+    <p><input type="checkbox" />Forretter/Apetizers</p> -->
+  </details>
+
+  <details class="varighed">
+    <summary>Varighed</summary>
+    <!-- <p><input type="checkbox" />Aftensmad</p>
+    <p><input type="checkbox" />Morgenmad</p>
+    <p><input type="checkbox" />Frokost</p>
+    <p><input type="checkbox" />Forretter/Apetizers</p> -->
+  </details>
 </div>
 <style>
   details {
@@ -47,12 +47,13 @@ import "../styles/style.css";
     border-radius: 7px;
     display: inline-block;
     font-size: 15px;
-    padding: 5px 20px; /* 0px top/bund, 20px venstre/højre */
+    padding: 5px 9px; /* 0px top/bund, 20px venstre/højre */
     margin-right: 20px;
     margin-bottom: 20px;
     /* justify-content: center; */
     /* position: absolute; */
     cursor: pointer;
+    width: 100%;
   }
 
   summary {
@@ -91,10 +92,29 @@ import "../styles/style.css";
 
   @media (min-width: 850px) {
     .filter-container {
-      gap: 20px;
+      display: flex;
+      gap: 10px;
       margin-bottom: 40px;
-      text-align: center;
+      justify-content: center;
+      align-items: flex-start; /* <- vigtigt for at undgå at bokse hopper */
+      flex-wrap: nowrap; /* forhindrer linjeskift (kan ændres til wrap hvis nødvendigt) */
     }
+
+    details {
+      text-align: start;
+      background-color: var(--brun);
+      border-radius: 7px;
+      font-size: 15px;
+      padding: 5px 9px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: auto;
+      overflow-y: auto; /* scroll hvis der er meget indhold */
+      min-width: 150px; /* så de ikke bliver for smalle */
+      width: 300px;
+    }
+
     summary,
     p {
       color: var(--skrift);
