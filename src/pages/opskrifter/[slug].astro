@@ -42,10 +42,12 @@ const ingredienser = opskrift.opskrift_ingredienser
 
 // Opdeler fremgangsmåden ved at splitte teksten på enkelt linjeskift (\n)
 // Fjerner unødvendige mellemrum, så hvert afsnit bliver vist som et separat <p>-element
-const afsnit = opskrift.opskrift_fremgang
-  .split("\n")
-  .map((s) => s.trim())
-  .filter((s) => s.length > 0); // fjerner tomme linjer, hvis der er nogen
+const afsnit = opskrift?.opskrift_fremgang
+  ? opskrift.opskrift_fremgang.split(/\n+/).map((s) => s.trim())
+  : [];
+// // ?. sikrer, at vi ikke prøver at tilgå .opskrift_fremgang hvis opskrift ikke findes.
+// Ternary ? : sikrer, at vi kun prøver .split() hvis feltet findes og ikke er null.
+// Hvis feltet er null, returnerer vi i stedet et tomt array, så appen ikke crasher.
 
 const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
 ---
@@ -167,10 +169,17 @@ const afsnitBeskrivelse = opskrift.opskrift_beskrivelse.split("\n");
             </div>
             <div class="fremgangsmade_boks">
               <h2>Fremgangsmåde:</h2>
+              {
+                afsnit.length > 0 ? (
+                  afsnit.map((trin, index) => <p key={index}>{trin}</p>)
+                ) : (
+                  <p>Fremgangsmåde mangler.</p>
+                  // … er en fallback-tekst, der vises hvis der ikke er nogen fremgangsmåde i databasen.
+                )
+              }
               <!-- // Viser hver del af fremgangsmåden som et <p>-element.
               // 'afsnit' er et array, hvor hvert element er et afsnit i teksten, opdelt ved linjeskift.
               // .map() looper gennem arrayet og viser hvert trin med en unik nøgle (key). -->
-              {afsnit.map((trin, index) => <p key={index}>{trin}</p>)}
             </div>
           </div>
           <div class="border"></div>
